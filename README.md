@@ -1,0 +1,1 @@
+# fukuoka-slow-trip-2027
