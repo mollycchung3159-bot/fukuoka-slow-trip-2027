@@ -98,7 +98,7 @@ h1 { font-family: var(--serif); font-size: clamp(3.7rem, 9vw, 7.8rem); line-heig
 .flight-strip p { margin: 0; color: var(--muted); font-size: .82rem; }
 .plane { align-self: center; color: var(--vermilion); font-size: 1.4rem; }
 
-.intro-panel, .itinerary, .notes { width: min(88%, 1080px); margin: 0 auto; }
+.intro-panel, .itinerary, .food-guide, .notes { width: min(88%, 1080px); margin: 0 auto; }
 .intro-panel { display: grid; grid-template-columns: 1.25fr .75fr; gap: 8vw; align-items: end; margin-bottom: 8rem; }
 .intro-panel h2, .section-heading h2, .notes h2 { font-family: var(--serif); font-size: clamp(2rem, 5vw, 3.7rem); line-height: 1.28; margin: .8rem 0 0; font-weight: 600; letter-spacing: -.025em; }
 .intro-panel > p { margin: 0; color: var(--muted); font-size: 1.04rem; }
@@ -190,6 +190,26 @@ h1 { font-family: var(--serif); font-size: clamp(3.7rem, 9vw, 7.8rem); line-heig
 .cost-box > em { color: var(--vermilion); font-style: normal; font-weight: 700; text-align: right; }
 .cost-box > small { grid-column: 1 / -1; color: var(--muted); font-size: .72rem; }
 
+.food-guide { padding-top: 9rem; scroll-margin-top: 90px; }
+.food-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.15rem; }
+.food-card { display: flex; flex-direction: column; min-height: 21rem; padding: 1.45rem; background: var(--paper-light); border: 1px solid var(--line); }
+.food-card.featured { background: #e9ece5; border-color: var(--moss); }
+.food-card-top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1.3rem; }
+.food-day, .food-mark { font-size: .68rem; font-weight: 700; letter-spacing: .08em; color: var(--vermilion); }
+.food-mark { padding: .2rem .45rem; border: 1px solid currentColor; }
+.food-mark.pr { color: var(--blue); }
+.food-card h3 { margin: 0; font-family: var(--serif); font-size: 1.45rem; font-weight: 600; }
+.food-type { margin: .2rem 0 1rem; color: var(--moss); font-size: .78rem; font-weight: 600; }
+.food-card > p:not(.food-type) { margin: 0 0 1.4rem; color: var(--muted); font-size: .9rem; }
+.food-budget { margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 1rem; align-items: end; }
+.food-budget strong { font-family: var(--serif); font-size: 1rem; line-height: 1.5; }
+.food-budget span { color: var(--vermilion); font-size: .78rem; font-weight: 700; text-align: right; }
+.food-actions { display: flex; gap: .55rem; margin-top: 1rem; }
+.food-actions a { flex: 1; padding: .55rem .65rem; border: 1px solid var(--ink); text-align: center; text-decoration: none; font-size: .75rem; transition: background .2s, color .2s; }
+.food-actions a:hover, .food-actions a:focus-visible { background: var(--ink); color: var(--paper-light); }
+.food-caution { margin-top: 1.15rem; padding: 1rem 1.2rem; background: #eee7df; border-left: 3px solid var(--vermilion); color: var(--muted); font-size: .86rem; }
+.food-caution strong { color: var(--ink); }
+
 .notes { padding-top: 9rem; }
 .note-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 3rem; }
 .note-grid article { padding-top: 1.3rem; border-top: 1px solid var(--ink); }
@@ -224,7 +244,7 @@ footer p { margin: 0; }
   .cost-box { margin-left: 0; grid-template-columns: 1fr 1fr; }
   .cost-box > span { grid-column: 1 / -1; }
   .cost-box > em { text-align: right; }
-  .note-grid { grid-template-columns: repeat(2, 1fr); }
+  .food-grid, .note-grid { grid-template-columns: repeat(2, 1fr); }
   .notes { padding-top: 7rem; }
 }
 
@@ -237,13 +257,15 @@ footer p { margin: 0; }
   .hero-intro { font-size: .95rem; }
   .trip-meta { font-size: .72rem; }
   .flight-strip { width: 92%; padding: 1.3rem; }
-  .intro-panel, .itinerary, .notes { width: 90%; }
+  .intro-panel, .itinerary, .food-guide, .notes { width: 90%; }
   .day-jump { top: 61px; margin-left: -5.5%; margin-right: -5.5%; }
   .day-jump a { font-size: .68rem; }
   .timeline li { grid-template-columns: 4rem 1fr; gap: .7rem; }
   .timeline li:not(:last-child)::after { left: 4.35rem; }
   .timeline div { padding-left: .8rem; }
-  .note-grid { grid-template-columns: 1fr; }
+  .food-grid, .note-grid { grid-template-columns: 1fr; }
+  .food-card { min-height: 0; }
+  .food-budget { align-items: start; }
   .closing { width: 100%; margin-bottom: 0; padding: 4rem 1.3rem; }
   footer { flex-direction: column; gap: .4rem; }
 }
