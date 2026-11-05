@@ -209,6 +209,10 @@ h1 { font-family: var(--serif); font-size: clamp(3.7rem, 9vw, 7.8rem); line-heig
 .food-actions a:hover, .food-actions a:focus-visible { background: var(--ink); color: var(--paper-light); }
 .food-caution { margin-top: 1.15rem; padding: 1rem 1.2rem; background: #eee7df; border-left: 3px solid var(--vermilion); color: var(--muted); font-size: .86rem; }
 .food-caution strong { color: var(--ink); }
+.stay-guide { scroll-margin-top: 90px; }
+.stay-budget { display: grid; grid-template-columns: .7fr 1.3fr; gap: 1.5rem; align-items: center; padding: 1.3rem 1.5rem; margin-bottom: 1.15rem; background: #e9ece5; border: 1px solid var(--moss); }
+.stay-budget strong { font-family: var(--serif); font-size: 1.25rem; }
+.stay-budget span { color: var(--muted); font-size: .9rem; }
 
 .notes { padding-top: 9rem; }
 .note-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 3rem; }
@@ -245,6 +249,7 @@ footer p { margin: 0; }
   .cost-box > span { grid-column: 1 / -1; }
   .cost-box > em { text-align: right; }
   .food-grid, .note-grid { grid-template-columns: repeat(2, 1fr); }
+  .stay-budget { grid-template-columns: 1fr; gap: .35rem; }
   .notes { padding-top: 7rem; }
 }
 
@@ -282,3 +287,4 @@ footer p { margin: 0; }
   .day-card { break-inside: avoid; }
   body { background: white; }
 }
+
