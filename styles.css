@@ -213,6 +213,18 @@ h1 { font-family: var(--serif); font-size: clamp(3.7rem, 9vw, 7.8rem); line-heig
 .stay-budget { display: grid; grid-template-columns: .7fr 1.3fr; gap: 1.5rem; align-items: center; padding: 1.3rem 1.5rem; margin-bottom: 1.15rem; background: #e9ece5; border: 1px solid var(--moss); }
 .stay-budget strong { font-family: var(--serif); font-size: 1.25rem; }
 .stay-budget span { color: var(--muted); font-size: .9rem; }
+.tax-guide { scroll-margin-top: 90px; }
+.tax-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.tax-steps article { background: var(--paper); padding: 1.5rem; min-height: 250px; }
+.tax-steps article > span { display: block; color: var(--vermilion); font-family: var(--serif); font-size: 1.8rem; margin-bottom: 1.2rem; }
+.tax-steps h3 { font-family: var(--serif); font-size: 1.2rem; margin: 0 0 .7rem; }
+.tax-steps p { color: var(--muted); font-size: .92rem; margin: 0; }
+.tax-checklist { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.15rem; margin: 1.15rem 0; }
+.tax-checklist > div { border: 1px solid var(--line); padding: 1.4rem 1.5rem; }
+.tax-checklist ul { margin: .8rem 0 0; padding-left: 1.2rem; color: var(--muted); }
+.tax-checklist li + li { margin-top: .45rem; }
+.tax-links { display: flex; flex-wrap: wrap; gap: .65rem 1.2rem; margin-top: .8rem; }
+.tax-links a { color: var(--ink); text-underline-offset: .25em; }
 
 .notes { padding-top: 9rem; }
 .note-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 3rem; }
@@ -249,6 +261,7 @@ footer p { margin: 0; }
   .cost-box > span { grid-column: 1 / -1; }
   .cost-box > em { text-align: right; }
   .food-grid, .note-grid { grid-template-columns: repeat(2, 1fr); }
+  .tax-steps { grid-template-columns: repeat(2, 1fr); }
   .stay-budget { grid-template-columns: 1fr; gap: .35rem; }
   .notes { padding-top: 7rem; }
 }
@@ -269,6 +282,8 @@ footer p { margin: 0; }
   .timeline li:not(:last-child)::after { left: 4.35rem; }
   .timeline div { padding-left: .8rem; }
   .food-grid, .note-grid { grid-template-columns: 1fr; }
+  .tax-steps, .tax-checklist { grid-template-columns: 1fr; }
+  .tax-steps article { min-height: 0; }
   .food-card { min-height: 0; }
   .food-budget { align-items: start; }
   .closing { width: 100%; margin-bottom: 0; padding: 4rem 1.3rem; }
