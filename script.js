@@ -1,16 +1,35 @@
 const cards = document.querySelectorAll('.day-card');
 
-cards.forEach((card) => {
+function setDayOpen(card, opening) {
   const button = card.querySelector('.day-summary');
   const detail = card.querySelector('.day-detail');
+  card.classList.toggle('open', opening);
+  button.setAttribute('aria-expanded', String(opening));
+  detail.hidden = !opening;
+}
+
+cards.forEach((card) => {
+  const button = card.querySelector('.day-summary');
 
   button.addEventListener('click', () => {
-    const opening = !card.classList.contains('open');
-    card.classList.toggle('open', opening);
-    button.setAttribute('aria-expanded', String(opening));
-    detail.hidden = !opening;
+    setDayOpen(card, !card.classList.contains('open'));
   });
 });
+
+document.querySelectorAll('.day-jump a').forEach((link) => {
+  link.addEventListener('click', () => {
+    const card = document.querySelector(link.getAttribute('href'));
+    if (card) setDayOpen(card, true);
+  });
+});
+
+function openLinkedDay() {
+  const card = [...cards].find((day) => `#${day.id}` === window.location.hash);
+  if (card) setDayOpen(card, true);
+}
+
+openLinkedDay();
+window.addEventListener('hashchange', openLinkedDay);
 
 async function shareTrip() {
   const status = document.getElementById('shareStatus');
