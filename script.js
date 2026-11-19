@@ -1,15 +1,19 @@
 const cards = document.querySelectorAll('.day-card');
 
 function updateBudget() {
- const people=Math.max(1,Math.min(20,Number(document.getElementById('budgetPeople').value)||1));
- const car=62000/people;
- const fmt=(amount)=>Math.ceil(amount).toLocaleString('en-US');
- for(const [id,value] of [['car',car],['twin',33200+34000+car],['single',51600+34000+car]]){
-  document.getElementById(id+'Yen').textContent='¥'+fmt(value)+(id==='car'?'':'–'+fmt(value+16000));
-  document.getElementById(id+'Hkd').textContent='HK$'+fmt(value*.05)+(id==='car'?'':'–'+fmt((value+16000)*.05));
+ const field=document.getElementById('flightCost');
+ const entered=field.value.trim()!=='';
+ const flight=Math.max(0,Number(field.value)||0);
+ const fmt=value=>Math.ceil(value).toLocaleString('en-US');
+ for(const [id,low,high] of [['twin',3285,4085],['single',4205,5005]]){
+  document.getElementById(id+'Yen').textContent='¥'+fmt((low+flight)*20)+'–'+fmt((high+flight)*20);
+  document.getElementById(id+'Hkd').textContent='HK$'+fmt(low+flight)+'–'+fmt(high+flight);
  }
+ document.getElementById('flightStatus').textContent=entered?'以下總額已加入你的機票；不含購物等個人開支。':'尚未提供機票價格；以下為機票前總額。';
+ try { localStorage.setItem('fukuoka-flight-cost',field.value); } catch {}
 }
-document.getElementById('budgetPeople').addEventListener('input',updateBudget);
+try { document.getElementById('flightCost').value=localStorage.getItem('fukuoka-flight-cost')||''; } catch {}
+document.getElementById('flightCost').addEventListener('input',updateBudget);
 updateBudget();
 if('serviceWorker' in navigator){
  navigator.serviceWorker.register('./sw.js').then(()=>navigator.serviceWorker.ready).then(()=>{
