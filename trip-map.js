@@ -4,6 +4,26 @@
   const heading = document.getElementById('mapHeading');
   const list = document.getElementById('mapStops');
   const allButton = document.getElementById('mapAll');
+  const transport = document.getElementById('mapTransport');
+  function transportCard(leg) {
+    const card=document.createElement('li');card.className='transport-leg';
+    const title=document.createElement('strong'); title.textContent=leg.from.name+' → '+leg.to.name;
+    const summary=document.createElement('p');summary.className='transport-summary';summary.textContent=leg.mode+' · '+leg.duration;
+    const note=document.createElement('p');note.textContent=leg.note;
+    const link=document.createElement('a');link.href=leg.url;link.target='_blank';link.rel='noopener';link.textContent='查看這段路線 ↗';
+    card.append(title,summary,note,link);return card;
+  }
+  function drawTransport() {
+    transport.replaceChildren();
+    for(let day=1;day<=6;day++) {
+      if(selected!=='all'&&selected!==day) continue;
+      const group=document.createElement(selected==='all'?'details':'div');
+      const title=document.createElement(selected==='all'?'summary':'h4');title.textContent='Day '+day+' · 逐站交通';
+      const legs=document.createElement('ol');legs.className='transport-legs';
+      window.tripTransportLegs(day).forEach(leg=>legs.append(transportCard(leg)));
+      group.append(title,legs);transport.append(group);
+    }
+  }
   let map, layer, tileLayer, selected = 'all', loading = false;
   const colors = ['#a44832', '#426b59', '#2c668e', '#825c91', '#9b6b21', '#555f69'];
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -26,6 +46,7 @@
       if (active) a.setAttribute('aria-current', 'date'); else a.removeAttribute('aria-current');
     });
     heading.textContent = selected === 'all' ? '六日地圖總覽' : `Day ${selected} · ${labels[selected - 1]}`;
+    drawTransport();
     panel.dataset.selectedDay = String(selected);
     list.replaceChildren();
     const numbered = [];
@@ -47,7 +68,11 @@
     const boxes = [];
     for (let day = 1; day <= 6; day++) {
       const route = numbered.filter(s => s.day === day);
-      if (route.length > 1) L.polyline(route.map(s => [s.lat, s.lng]), { color: colors[day - 1], weight: 2.5, dashArray: '5 7', opacity: .65, interactive: false }).addTo(layer);
+      window.tripTransportLegs(day).forEach(leg => {
+        if(!route.length) return;
+        const popup=document.createElement('ol');popup.className='transport-legs';popup.append(transportCard(leg));
+        L.polyline([[leg.from.lat,leg.from.lng],[leg.to.lat,leg.to.lng]], {color:colors[day-1],weight:4,dashArray:'5 7',opacity:.65}).addTo(layer).bindPopup(popup);
+      });
       // Merge repeat visits to the same place so return-trip labels remain readable.
       const groups = new Map();
       route.forEach(s => { const key = s.id; if (!groups.has(key)) groups.set(key, []); groups.get(key).push(s); });
