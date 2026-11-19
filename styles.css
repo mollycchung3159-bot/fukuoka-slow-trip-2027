@@ -358,6 +358,8 @@ a { min-height:44px; min-width:44px; display:inline-flex; align-items:center; }
 .leaflet-popup-content { color:#25332f; }.leaflet-popup-content a { color:#245b77; }
 .day-jump { top:var(--topbar-height,80px); }
 .day-jump a[aria-current="date"] { color:var(--vermilion); background:var(--paper-light); }
+.trip-map-block .day-jump { margin:0 0 .8rem; width:100%; }
+.trip-map-block .day-jump a { display:flex; flex-direction:column; justify-content:center; align-items:center; gap:.15rem; }
 @media print { .trip-map-block { display:none; } }
 @media (prefers-color-scheme: dark) {
   :root { --paper: #242824; --paper-light: #303831; --ink: #eee9dd; --muted: #b4bfb5; --line: #566057; --vermilion: #ee927c; }
