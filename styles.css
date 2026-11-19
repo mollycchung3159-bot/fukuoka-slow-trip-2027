@@ -304,6 +304,15 @@ footer p { margin: 0; }
 }
 
 [hidden] { display: none !important; }
+*, *::before, *::after { box-sizing: border-box; }
+.budget-table { overflow-x: auto; }
+.budget-table table { width:100%; border-collapse:collapse; font-size:.85rem; }
+.budget-table th,.budget-table td { text-align:left; padding:.6rem .3rem; border-bottom:1px solid var(--line); overflow-wrap:anywhere; }
+.budget-people input { width:5rem; min-height:44px; }
+.emergency-card { padding:1rem; border:1px solid var(--line); }
+.emergency-card a { display:inline-flex; align-items:center; min-height:44px; }
+.topbar { z-index:100; }
+.trip-checklist label { padding-block:11px; }
 .day-controls, .food-filters { display: flex; gap: .5rem; flex-wrap: wrap; margin: 1rem 0; }
 .day-controls button, .food-filters button, .today-button { min-height: 44px; padding: .5rem .8rem; background: var(--paper); color: var(--ink); border: 1px solid var(--line); cursor: pointer; }
 .food-filters [aria-pressed="true"] { border-color: var(--vermilion); color: var(--vermilion); }
@@ -318,7 +327,7 @@ summary { min-height: 44px; padding: .75rem; cursor: pointer; }
 @media (max-width: 760px) {
   .topbar { position: sticky; top: 0; height: auto; min-height: 62px; display: flex; flex-wrap: wrap; background: var(--paper); box-shadow: 0 2px 8px #0001; }
   .topbar nav { display: flex; width: 100%; overflow-x: auto; white-space: nowrap; gap: .7rem; }
-  .topbar nav > * { flex-shrink: 0; min-height: 44px; display: inline-flex; align-items: center; }
+  .topbar nav > *, .topbar nav > a { flex-shrink: 0; min-height: 44px; display: inline-flex; align-items: center; }
   .day-jump { top: 115px; }
   .day-card, .food-card { scroll-margin-top: 200px; }
 }
