@@ -31,6 +31,31 @@ function openLinkedDay() {
 openLinkedDay();
 window.addEventListener('hashchange', openLinkedDay);
 
+document.getElementById('expandAll').addEventListener('click', () => cards.forEach(card => setDayOpen(card, true)));
+document.getElementById('collapseAll').addEventListener('click', () => cards.forEach(card => setDayOpen(card, false)));
+function goToday(automatic = false) {
+  const date = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Tokyo', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+  const match = /^2027-03-(1[5-9]|20)$/.exec(date);
+  const card = match && document.getElementById(`day${Number(match[1]) - 14}`);
+  if (card) { setDayOpen(card, true); card.scrollIntoView(); }
+  else if (!automatic) document.getElementById('todayStatus').textContent = '今日行程適用於2027年3月15–20日。';
+}
+document.querySelector('.today-button').addEventListener('click', () => goToday());
+if (!window.location.hash) goToday(true);
+document.querySelectorAll('[data-food-filter]').forEach(button => button.addEventListener('click', () => {
+  const filter = button.dataset.foodFilter;
+  let visible = 0;
+  document.querySelectorAll('[data-food-day]').forEach(card => { card.hidden = filter !== 'all' && card.dataset.foodDay !== filter; if (!card.hidden) visible++; });
+  document.querySelectorAll('[data-food-filter]').forEach(chip => chip.setAttribute('aria-pressed', String(chip === button)));
+  document.getElementById('foodEmpty').hidden = visible > 0;
+}));
+document.querySelectorAll('a[href^="#food-"]').forEach(link => link.addEventListener('click', () => document.querySelector('[data-food-filter="all"]').click()));
+document.querySelectorAll('[data-trip-check]').forEach(input => {
+  const key = `fukuoka-check-${input.dataset.tripCheck}`;
+  try { input.checked = localStorage.getItem(key) === 'true'; } catch {}
+  input.addEventListener('change', () => { try { localStorage.setItem(key, String(input.checked)); } catch {} });
+});
+
 async function shareTrip() {
   const status = document.getElementById('shareStatus');
   const data = {
