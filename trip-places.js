@@ -28,6 +28,7 @@ window.TRIP_PLACES = {
   nakasu: { name: '中洲／川端晚餐區（屋台候補）', type: '餐廳', lat: 33.5899407, lng: 130.4089399, googleQuery: '中洲屋台', area: true },
   shirogane: place('白金茶房', '餐廳', 'HCH4+85'),
   ohori: place('大濠公園', '景點', 'H9PG+FH'),
+  teamlab: { name: 'teamLab Forest Fukuoka（E・ZO 5F）', type: '景點', lat:33.5954597, lng:130.3637533, googleQuery:'teamLab Forest Fukuoka BOSS E ZO FUKUOKA' },
   castle: place('舞鶴公園／福岡城跡（候選）', '景點', 'H9PM+37', '福岡城跡'),
   tenjin: { name: '天神／西鐵福岡站一帶', type: '交通', lat: 33.5886887, lng: 130.3999665, googleQuery: '西鉄福岡 天神駅', area: true },
   hakata: place('JR博多站', '交通', 'HCQC+V7', '博多駅'),
