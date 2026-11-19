@@ -2,6 +2,10 @@
 <html lang="zh-HK">
 <head>
   <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <meta property="og:title" content="福岡，慢慢行。">
+  <meta property="og:description" content="2027年3月15–20日，六日五夜慢遊手帖。">
+  <meta property="og:image" content="https://mollycchung3159-bot.github.io/fukuoka-slow-trip-2027/assets/itoshima.webp">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f4f0e7">
   <meta name="description" content="福岡六日五夜慢遊行程，2027年3月15至20日。">
@@ -15,7 +19,7 @@
   <a class="skip-link" href="#itinerary">跳到行程</a>
   <header class="topbar">
     <a class="brand" href="#top" aria-label="回到頁首">福岡旅手帖</a>
-    <nav aria-label="主要導覽">
+    <nav aria-label="主要導覽"><button type="button" class="today-button">今日行程</button>
       <a href="#itinerary">行程</a>
       <a href="#food">餐廳</a>
       <a href="#stay">住宿</a>
@@ -84,11 +88,11 @@
         <a href="#day6"><span>六</span>3/20</a>
       </nav>
 
-      <div class="days">
+      <div class="day-controls"><button id="expandAll">全部展開</button><button id="collapseAll">全部收起</button><span id="todayStatus" role="status"></span></div><div class="days">
         <article class="day-card open" id="day1">
           <button class="day-summary" type="button" aria-expanded="true">
             <span class="day-number">01</span>
-            <span class="day-title"><small>3月15日 · 星期一</small><strong>抵達福岡，博多暖身</strong><em>抵達日</em></span>
+            <span class="day-title"><small>3月15日 · 星期一</small><strong>抵達福岡，博多暖身</strong><em>抵達日</em><small class="day-overview">博多／運河城 · 巴士／地下鐵 · 交通 HK$20–50</small></span>
             <span class="toggle" aria-hidden="true"></span>
           </button>
           <div class="day-detail">
@@ -107,13 +111,13 @@
         <article class="day-card" id="day2">
           <button class="day-summary" type="button" aria-expanded="false">
             <span class="day-number">02</span>
-            <span class="day-title"><small>3月16日 · 星期二</small><strong>Pancake、湖邊與天神</strong><em>10:15 出門 · 市內慢行</em></span>
+            <span class="day-title"><small>3月16日 · 星期二</small><strong>Pancake、湖邊與天神</strong><em>10:15 出門 · 市內慢行</em><small class="day-overview">白金／大濠／天神 · 地下鐵／步行 · HK$132–180 起</small></span>
             <span class="toggle" aria-hidden="true"></span>
           </button>
           <div class="day-detail" hidden>
             <figure class="place-image"><img src="assets/ohori-fukuoka-castle.webp" alt="大濠公園湖景與福岡城石垣的日系插畫" loading="lazy"><figcaption>大濠公園與福岡城跡 · 景點插畫</figcaption></figure>
             <ol class="timeline">
-              <li><time>10:45</time><div><strong>白金茶房 Pancake brunch</strong><p>朋友指定想去。慢慢食一份 Pancake 配咖啡，建議先預約；不用再安排緊接着的午餐。</p></div></li>
+              <li><time>10:45</time><div><strong><a href="#food-shirogane">白金茶房 Pancake brunch</a></strong><p>朋友指定想去。慢慢食一份 Pancake 配咖啡，建議先預約；不用再安排緊接着的午餐。</p></div></li>
               <li><time>12:30</time><div><strong>大濠公園</strong><p>湖邊散步，不必完整繞圈；肚餓才在六本松吃小食。</p></div></li>
               <li><time>14:15</time><div><strong>美術館或日本庭園</strong><p>二選一。如果不想入館，就把時間留給湖邊。</p></div></li>
               <li><time>15:45</time><div><strong>舞鶴公園、福岡城跡</strong><p>走到天守台一帶即可，不逐個遺跡完成。</p></div></li>
@@ -126,7 +130,7 @@
         <article class="day-card" id="day3">
           <button class="day-summary" type="button" aria-expanded="false">
             <span class="day-number">03</span>
-            <span class="day-title"><small>3月17日 · 星期三</small><strong>糸島，看海與雞白湯</strong><em>10:15–10:30 出發 · 建議包車</em></span>
+            <span class="day-title"><small>3月17日 · 星期三</small><strong>糸島，看海與雞白湯</strong><em>10:15–10:30 出發 · 建議包車</em><small class="day-overview">糸島 · 包車 · 每車 HK$3,100＋餐飲</small></span>
             <span class="toggle" aria-hidden="true"></span>
           </button>
           <div class="day-detail" hidden>
@@ -134,9 +138,9 @@
             <ol class="timeline">
               <li><time>11:15</time><div><strong>櫻井二見浦</strong><p>夫婦岩及海岸散步，避免密集打卡。</p></div></li>
               <li><time>12:30</time><div><strong>海景午餐</strong><p>不特意排糸島食堂，選海鮮定食或景觀餐廳。</p></div></li>
-              <li><time>14:30</time><div><strong>OCEAN HOUSE 海景咖啡</strong><p>已確認原帖作者留言寫明店名是 OCEAN HOUSE，與今宿官方店址及180°海景資料一致。作者提醒要先訂座；安排包車時可直接加入路線。<a href="https://www.threads.com/share/BArLbD2nuD" target="_blank" rel="noopener">原帖 ↗</a>　<a href="https://www.opefac.com/restaurant/oceanhouse/" target="_blank" rel="noopener">官方訂座 ↗</a></p></div></li>
+              <li><time>14:30</time><div><strong><a href="#food-oceanhouse">OCEAN HOUSE 海景咖啡</a></strong><p>已確認原帖作者留言寫明店名是 OCEAN HOUSE，與今宿官方店址及180°海景資料一致。作者提醒要先訂座；安排包車時可直接加入路線。<a href="https://www.threads.com/share/BArLbD2nuD" target="_blank" rel="noopener">原帖 ↗</a>　<a href="https://www.opefac.com/restaurant/oceanhouse/" target="_blank" rel="noopener">官方訂座 ↗</a></p></div></li>
               <li><time>15:45</time><div><strong>農產直賣所</strong><p>最後買小食或水果，約16:30回程，為18:00拉麵預留車程。</p></div></li>
-              <li><time>18:00</time><div><strong>博多鶏soba 建 TATERU · 必去</strong><p>糸島回程後到住吉吃阿奶指定的雞白湯拉麵。店內只有8個吧枱位、不設預約，星期三晚市18:00–22:00；目標18:00前後到場，實際按包車回程時間彈性順延。<a href="https://www.google.com/maps/search/?api=1&query=%E5%8D%9A%E5%A4%9A%E9%B6%8Fsoba+%E5%BB%BA+TATERU" target="_blank" rel="noopener">Google Maps ↗</a></p></div></li>
+              <li><time>18:00</time><div><strong><a href="#food-tateru">博多鶏soba 建 TATERU · 必去</a></strong><p>糸島回程後到住吉吃阿奶指定的雞白湯拉麵。店內只有8個吧枱位、不設預約，星期三晚市18:00–22:00；目標18:00前後到場，實際按包車回程時間彈性順延。<a href="https://www.google.com/maps/search/?api=1&query=%E5%8D%9A%E5%A4%9A%E9%B6%8Fsoba+%E5%BB%BA+TATERU" target="_blank" rel="noopener">Google Maps ↗</a></p></div></li>
             </ol>
             <div class="cost-box vehicle"><span>包車＋拉麵晚餐</span><strong>¥62,000／車＋約 ¥1,000–2,000／人</strong><em>車約 HK$3,100</em><small>包車最終按人數及車型報價；海景咖啡另計</small></div>
             <p class="soft-note">糸島交通可同時比較包車與小團 day tour；報名前核對集合及回程時間、景點停留、能否到 OCEAN HOUSE。若團隊太早出發或太晚回來，維持包車／自行安排，保留晚上的拉麵。</p>
@@ -147,17 +151,17 @@
         <article class="day-card" id="day4">
           <button class="day-summary" type="button" aria-expanded="false">
             <span class="day-number">04</span>
-            <span class="day-title"><small>3月18日 · 星期四</small><strong>八女，為貓咪祈福</strong><em>10:00 出發 · 貓咪御守必去</em></span>
+            <span class="day-title"><small>3月18日 · 星期四</small><strong>八女，為貓咪祈福</strong><em>10:00 出發 · 貓咪御守必去</em><small class="day-overview">八女 · 鐵路／巴士 · HK$425–600 起</small></span>
             <span class="toggle" aria-hidden="true"></span>
           </button>
           <div class="day-detail" hidden>
-            <figure class="place-image"><img src="assets/dazaifu.webp" alt="福岡傳統神社紅橋與池塘的日系插畫" loading="lazy"><figcaption>八女 · 福島八幡宮</figcaption></figure>
+            <figure class="place-image"><img src="assets/dazaifu.webp" alt="傳統神社示意插畫，非福島八幡宮實景" loading="lazy"><figcaption>八女行程 · 神社示意插畫（非實景）</figcaption></figure>
             <ol class="timeline">
               <li><time>11:15</time><div><strong>福島八幡宮 · 必去</strong><p>先參拜，再到授與所找透明「愛猫守り」。授與所一般9:00–16:30、星期三休息；款式及庫存會變，出發前一星期再查官方公告。<a href="https://fukushimahachimangu.or.jp/" target="_blank" rel="noopener">官方網站 ↗</a></p></div></li>
-              <li><time>12:15</time><div><strong>かつきや 八女本店</strong><p>就在神社境內，午餐可吃季節おこわ；想跟帖文可選八女茶甜品或焙茶 parfait，實際供應按當日餐牌。<a href="https://www.google.com/maps/search/?api=1&query=%E3%81%8B%E3%81%A4%E3%81%8D%E3%82%84+%E5%85%AB%E5%A5%B3%E6%9C%AC%E5%BA%97" target="_blank" rel="noopener">Google Maps ↗</a></p></div></li>
+              <li><time>12:15</time><div><strong><a href="#food-katsukiya">かつきや 八女本店</a></strong><p>就在神社境內，午餐可吃季節おこわ；想跟帖文可選八女茶甜品或焙茶 parfait，實際供應按當日餐牌。<a href="https://www.google.com/maps/search/?api=1&query=%E3%81%8B%E3%81%A4%E3%81%8D%E3%82%84+%E5%85%AB%E5%A5%B3%E6%9C%AC%E5%BA%97" target="_blank" rel="noopener">Google Maps ↗</a></p></div></li>
               <li><time>14:00</time><div><strong>八女福島白壁老街</strong><p>由神社步行約兩分鐘，慢慢看傳統町家；按體力再選八女傳統工藝館。</p></div></li>
               <li><time>16:15</time><div><strong>返回福岡市</strong><p>公共交通全程約80–100分鐘；想更舒服可預約車接送或與糸島包車一併比較報價。</p></div></li>
-              <li><time>19:00</time><div><strong>確定燒肉晚餐 · NIKUICHI</strong><p>這晚正式留給燒肉，優先預約藥院 NIKUICHI，先點特選黑毛和牛7種拼盤再追加。若想改吃名物ランタン，可把同晚換成天神南「にくまる」；兩間只選一間。</p></div></li>
+              <li><time>19:00</time><div><strong><a href="#food-nikuichi">確定燒肉晚餐 · NIKUICHI</a></strong><p>這晚正式留給燒肉，優先預約藥院 NIKUICHI，先點特選黑毛和牛7種拼盤再追加。若想改吃名物ランタン，可把同晚換成天神南「にくまる」；兩間只選一間。</p></div></li>
             </ol>
             <div class="cost-box"><span>交通＋午餐甜品＋燒肉</span><strong>約 ¥8,500–12,000／人</strong><em>約 HK$425–600</em><small>御守初穗料另計；交通按公共交通估算，包車則另行報價</small></div>
             <p class="soft-note">貓咪御守仍是八女這天的重點。明太子法包已確認是太宰府的 <strong>Loop a Bread · 必去</strong>（宰府2-7-5）；店舖通常9:00–17:00、星期一及二休息。太宰府現升為必去，應另預留半日，不能在八女回程尾段趕去。按現有慢遊節奏，需與大家決定以哪一段行程交換。麵包預算先抓約¥500–1,000／人（約HK$25–50），實際依店內標價。<a href="https://www.threads.com/share/BATfgTlKH7" target="_blank" rel="noopener">朋友收藏原帖 ↗</a>　<a href="https://dazaifu.org/introduce/shop3965/" target="_blank" rel="noopener">太宰府觀光協會 ↗</a>　<a href="https://www.google.com/maps/search/?api=1&query=Loop+a+Bread+Dazaifu" target="_blank" rel="noopener">Google Maps ↗</a></p>
@@ -167,7 +171,7 @@
         <article class="day-card" id="day5">
           <button class="day-summary" type="button" aria-expanded="false">
             <span class="day-number">05</span>
-            <span class="day-title"><small>3月19日 · 星期五</small><strong>門司港到皿倉山</strong><em>最遲 10:00 出門 · 全程最長一日</em></span>
+            <span class="day-title"><small>3月19日 · 星期五</small><strong>門司港到皿倉山</strong><em>最遲 10:00 出門 · 全程最長一日</em><small class="day-overview">門司港／皿倉山 · 鐵路／纜車 · 交通 HK$300–350</small></span>
             <span class="toggle" aria-hidden="true"></span>
           </button>
           <div class="day-detail" hidden>
@@ -187,7 +191,7 @@
         <article class="day-card" id="day6">
           <button class="day-summary" type="button" aria-expanded="false">
             <span class="day-number">06</span>
-            <span class="day-title"><small>3月20日 · 星期六</small><strong>帶着手信回香港</strong><em>10:30 退房 · 16:05 起飛</em></span>
+            <span class="day-title"><small>3月20日 · 星期六</small><strong>帶着手信回香港</strong><em>10:30 退房 · 16:05 起飛</em><small class="day-overview">福岡機場 · 地下鐵／接駁巴士 · 交通 HK$13–25</small></span>
             <span class="toggle" aria-hidden="true"></span>
           </button>
           <div class="day-detail" hidden>
@@ -212,72 +216,72 @@
         <p>預算為每位成人估算，港幣按 ¥1 ≈ HK$0.05 換算。Google Maps 連結會在新視窗開啟。</p>
       </div>
 
-      <div class="food-grid">
-        <article class="food-card featured">
-          <div class="food-card-top"><span class="food-day">DAY 2 · 已加入</span><span class="food-mark">Thread推薦</span></div>
+      <div class="food-filters" aria-label="按日子篩選餐廳"><button data-food-filter="all" aria-pressed="true">全部</button><button data-food-filter="1" aria-pressed="false">Day 1</button><button data-food-filter="2" aria-pressed="false">Day 2</button><button data-food-filter="3" aria-pressed="false">Day 3</button><button data-food-filter="4" aria-pressed="false">Day 4</button><button data-food-filter="5" aria-pressed="false">Day 5</button><button data-food-filter="6" aria-pressed="false">Day 6</button><button data-food-filter="free" aria-pressed="false">自由時間</button></div><p id="foodEmpty" hidden>這一天暫無餐廳卡。</p><div class="food-grid">
+        <article id="food-shirogane" data-food-day="2" class="food-card featured">
+          <div class="food-card-top"><span class="food-day">Day 2 · Brunch</span><span class="food-mark">建議訂位</span></div>
           <h3>白金茶房</h3>
           <p class="food-type">熱香餅 · Coffee · 白金</p>
-          <p>環境舒服、適合慢慢坐；留言對味道評價普通，所以定位為朋友想去的 brunch，而不是排隊必食店。</p>
+          <p>適合慢慢坐，享用熱香餅與咖啡。</p>
           <div class="food-budget"><strong>¥1,800–2,500</strong><span>約 HK$90–125／人</span></div>
           <div class="food-actions"><a href="https://www.google.com/maps/search/?api=1&query=%E7%99%BD%E9%87%91%E8%8C%B6%E6%88%BF+%E7%A6%8F%E5%B2%A1" target="_blank" rel="noopener">Google Maps ↗</a><a href="https://s-sabo.com/" target="_blank" rel="noopener">官方網站 ↗</a></div>
         </article>
 
-        <article class="food-card featured">
-          <div class="food-card-top"><span class="food-day">DAY 3 · 正式加入</span><span class="food-mark">阿奶 Must Go</span></div>
+        <article id="food-tateru" data-food-day="3" class="food-card featured">
+          <div class="food-card-top"><span class="food-day">Day 3 · 晚餐</span><span class="food-mark">不設預約／要排隊</span></div>
           <h3>博多鶏soba 建 TATERU</h3>
           <p class="food-type">雞白湯拉麵 · 住吉／運河城附近</p>
-          <p>阿奶指定必去。雞白湯濃厚但順口；星期一休息，所以不放抵達日，改排糸島回程的星期三晚。只有8個吧枱位、不設預約，要預留排隊彈性。</p>
+          <p>星期一休息。店內只有8個吧枱位、不設預約，請預留排隊時間。</p>
           <div class="food-budget"><strong>約 ¥1,000–2,000</strong><span>約 HK$50–100／人</span></div>
           <div class="food-actions"><a href="https://www.google.com/maps/search/?api=1&query=%E5%8D%9A%E5%A4%9A%E9%B6%8Fsoba+%E5%BB%BA+TATERU" target="_blank" rel="noopener">Google Maps ↗</a><a href="https://www.threads.com/share/BAYbwDoBwQ" target="_blank" rel="noopener">Threads ↗</a></div>
         </article>
 
-        <article class="food-card featured">
-          <div class="food-card-top"><span class="food-day">DAY 4 · 確定一晚</span><span class="food-mark">燒肉首選</span></div>
+        <article id="food-nikuichi" data-food-day="4" class="food-card featured">
+          <div class="food-card-top"><span class="food-day">Day 4 · 晚餐</span><span class="food-mark">需訂位</span></div>
           <h3>藥院焼肉 NIKUICHI</h3>
           <p class="food-type">黑毛和牛 · 藥院</p>
-          <p>八女回程後正式安排的燒肉晚餐。80席、環境較鬆動，價錢與質素最平衡；建議先點特選七種盛合，再按喜好追加，並提早網上預約。</p>
+          <p>建議提早網上預約，可先點特選七種盛合再追加。</p>
           <div class="food-budget"><strong>¥4,500–6,000</strong><span>約 HK$225–300／人</span></div>
           <div class="food-actions"><a href="https://www.google.com/maps/search/?api=1&query=%E8%96%AC%E9%99%A2%E7%84%BC%E8%82%89+NIKUICHI" target="_blank" rel="noopener">Google Maps ↗</a><a href="https://www.yakiniku-nikuichi.com/" target="_blank" rel="noopener">官方網站 ↗</a></div>
         </article>
 
-        <article class="food-card">
-          <div class="food-card-top"><span class="food-day">DAY 4 · 替換選項</span><span class="food-mark">名物體驗</span></div>
+        <article id="food-nikumaru" data-food-day="4" class="food-card">
+          <div class="food-card-top"><span class="food-day">Day 4 · 備選</span><span class="food-mark">備選</span></div>
           <h3>焼肉酒場 にくまる 春吉店</h3>
           <p class="food-type">黑毛和牛 · 天神南／春吉</p>
-          <p>新帖排第一，名物是套餐限定的ランタン黃身醬油漬及厚切牛舌。全店只有17個吧枱位，氣氛與特色勝 NIKUICHI，但座位較侷促；想要體驗感可同晚二選一。</p>
+          <p>全店17個吧枱位；與 NIKUICHI 同晚二選一。</p>
           <div class="food-budget"><strong>約 ¥5,000–7,000</strong><span>約 HK$250–350／人</span></div>
           <div class="food-actions"><a href="https://www.google.com/maps/search/?api=1&query=%E7%84%BC%E8%82%89%E9%85%92%E5%A0%B4+%E3%81%AB%E3%81%8F%E3%81%BE%E3%82%8B+%E6%98%A5%E5%90%89%E5%BA%97" target="_blank" rel="noopener">Google Maps ↗</a><a href="https://taiyounofune.company/nikumaru_heiwa/home/group/nikumaru_haruyoshi" target="_blank" rel="noopener">官方網站 ↗</a></div>
         </article>
 
-        <article class="food-card featured">
-          <div class="food-card-top"><span class="food-day">DAY 4 · 已加入</span><span class="food-mark">御守同站</span></div>
+        <article id="food-katsukiya" data-food-day="4" class="food-card featured">
+          <div class="food-card-top"><span class="food-day">Day 4 · 午餐／甜品</span><span class="food-mark">午餐／甜品</span></div>
           <h3>かつきや 八女本店</h3>
           <p class="food-type">季節おこわ · 八女茶甜品 · 福島八幡宮境內</p>
-          <p>參拜後直接吃午餐或甜品，不用再轉車。Threads 推薦焙茶 parfait；餐廳亦供應八女茶甜品，季節款式以當日餐牌為準。</p>
+          <p>神社境內，參拜後吃午餐或八女茶甜品；供應依當日餐牌。</p>
           <div class="food-budget"><strong>¥1,000–2,500</strong><span>約 HK$50–125／人</span></div>
           <div class="food-actions"><a href="https://www.google.com/maps/search/?api=1&query=%E3%81%8B%E3%81%A4%E3%81%8D%E3%82%84+%E5%85%AB%E5%A5%B3%E6%9C%AC%E5%BA%97" target="_blank" rel="noopener">Google Maps ↗</a><a href="https://www.threads.com/share/BAWVFRF12a" target="_blank" rel="noopener">Threads ↗</a></div>
         </article>
 
-        <article class="food-card">
-          <div class="food-card-top"><span class="food-day">DAY 3 · 新參考</span><span class="food-mark">海景</span></div>
+        <article id="food-oceanhouse" data-food-day="3" class="food-card">
+          <div class="food-card-top"><span class="food-day">Day 3 · 咖啡</span><span class="food-mark">需訂位</span></div>
           <h3>OCEAN HOUSE</h3>
           <p class="food-type">今宿 · 180°海景 · Cafe／Pizza</p>
-          <p>已確認就是原帖中的今宿 OCEAN HOUSE：作者在留言直接寫明店名，官方地址及180°海景亦吻合。原帖提醒先訂座，建議確定包車時間後預約。</p>
+          <p>建議確定包車時間後先訂座。</p>
           <div class="food-budget"><strong>¥1,500–3,500</strong><span>約 HK$75–175／人</span></div>
           <div class="food-actions"><a href="https://www.google.com/maps/search/?api=1&query=OCEAN+HOUSE+%E4%BB%8A%E5%AE%BF" target="_blank" rel="noopener">Google Maps ↗</a><a href="https://www.opefac.com/restaurant/oceanhouse/" target="_blank" rel="noopener">官方訂座 ↗</a><a href="https://www.threads.com/share/BArLbD2nuD" target="_blank" rel="noopener">Threads ↗</a></div>
         </article>
 
-        <article class="food-card">
-          <div class="food-card-top"><span class="food-day">自由時間 · 二選一</span><span class="food-mark">拉麵</span></div>
+        <article id="food-ramen" data-food-day="free" class="food-card">
+          <div class="food-card-top"><span class="food-day">自由時間 · 備選</span><span class="food-mark">備選</span></div>
           <h3>大砲拉麵／博多元気一杯!!</h3>
           <p class="food-type">久留米系／博多豚骨</p>
-          <p>兩間不需要都食；以當日位置和排隊時間決定。博多元気一杯盡量避開午、晚餐高峰。</p>
+          <p>按當日位置及排隊時間選一間，盡量避開午、晚餐高峰。</p>
           <div class="food-budget"><strong>¥1,000–1,500</strong><span>約 HK$50–75／人</span></div>
           <div class="food-actions split"><a href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E7%A0%B2%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%B3+%E7%A6%8F%E5%B2%A1" target="_blank" rel="noopener">大砲 Maps ↗</a><a href="https://www.google.com/maps/search/?api=1&query=%E5%8D%9A%E5%A4%9A%E5%85%83%E6%B0%97%E4%B8%80%E6%9D%AF" target="_blank" rel="noopener">元気一杯 Maps ↗</a></div>
         </article>
       </div>
 
-      <aside class="food-caution"><strong>今輪取捨：</strong>燒肉只留一晚，首選 NIKUICHI；にくまる是同晚替換，兩間不會重複吃。高級全程代烤的焼肉すどう（約¥10,000起）只作升級候補；AGITO 因留言有直接負評、牛乃價格較高但未見明顯優勢，暫不加入。別府水天壽司不順現有路線；串燒 Chinpunkampun hanare 先收藏，不再塞入六日行程。</aside>
+      <details class="selection-record"><summary>篩選紀錄</summary><p>燒肉只留一晚，首選 NIKUICHI；にくまる是同晚替換，兩間不會重複吃。高級全程代烤的焼肉すどう（約¥10,000起）只作升級候補；AGITO 因留言有直接負評、牛乃價格較高但未見明顯優勢，暫不加入。別府水天壽司不順現有路線；串燒 Chinpunkampun hanare 先收藏，不再塞入六日行程。</p></details>
     </section>
 
     <section class="food-guide stay-guide" id="stay" aria-labelledby="stay-title">
@@ -287,13 +291,12 @@
         <p>2027年3月15日入住、20日退房。現階段以 Twin 兩位成人＋Single 一位成人作比較；選址不再限於博多站附近，只要晚間安全、附近有餐廳／便利店，而且日常步行交通可接受即可。</p>
       </div>
       <div class="stay-budget"><strong>住宿總預算 HK$7,500–8,000</strong><span>最終保留4間。三間已有 Trip.com 同日期參考價，按 Twin＋Single、五晚、不含早餐的可取消方案約 HK$5,755–6,605；Toyo Hotel 的2027年3月官方房價尚未開放。另留住宿稅及價格浮動空間，實際以結帳頁連稅總額為準。</span></div>
-      <div class="food-grid">
+      <aside class="stay-status">目前基準：東急博多卓越（中洲）｜狀態：未訂</aside><div class="food-grid">
         <article class="food-card featured"><div class="food-card-top"><span class="food-day">01 · 綜合首選</span><span class="food-mark">中洲</span></div><h3>東急博多卓越大酒店</h3><p class="food-type">標準雙床 18.5–19.6㎡＋標準單人 18.3–19.6㎡</p><p>Trip.com 9.1／10。中洲川端站約130米，樓下餐飲、Donki及河畔散步都方便。設施略有年份，但兩間房面積平均、價格已核實，位置與風險最平衡。</p><div class="food-budget"><strong>約 HK$5,900／五晚</strong><span>Twin HK$664＋Single HK$516／晚</span></div><div class="food-actions"><a href="https://www.trip.com/w/torJcZX39X2" target="_blank" rel="noopener">Trip.com ↗</a><a href="https://www.tokyuhotels.co.jp/en/hakata-e/room/index.html" target="_blank" rel="noopener">官方房型 ↗</a><a href="https://www.google.com/maps/search/?api=1&query=Hakata+Excel+Hotel+Tokyu" target="_blank" rel="noopener">Google Maps ↗</a></div></article>
         <article class="food-card"><div class="food-card-top"><span class="food-day">02 · 舒適首選</span><span class="food-mark">天神／大名</span></div><h3>福岡蒙特利拉蘇瑞酒店</h3><p class="food-type">標準雙床 22.2–25.6㎡＋標準單人約15㎡</p><p>Trip.com 8.9／10。赤坂站約410米、天神站約480米，購物及餐廳集中；Twin 是四強中最寬敞。缺點是酒店較有年份、Single 較細，亦有個別隔音及清潔評語。</p><div class="food-budget"><strong>約 HK$6,605／五晚</strong><span>Twin HK$686＋Single HK$635／晚</span></div><div class="food-actions"><a href="https://www.trip.com/w/rgJASog49X2" target="_blank" rel="noopener">Trip.com ↗</a><a href="https://www.hotelmonterey.co.jp/en/lasoeur_fukuoka/stay/room/145952056a06ba3.html" target="_blank" rel="noopener">官方房型 ↗</a><a href="https://www.google.com/maps/search/?api=1&query=Hotel+Monterey+La+Soeur+Fukuoka" target="_blank" rel="noopener">Google Maps ↗</a></div></article>
-        <article class="food-card"><div class="food-card-top"><span class="food-day">03 · 待追價</span><span class="food-mark">博多站</span></div><h3>Toyo Hotel 福岡</h3><p class="food-type">Economy Twin 18.5㎡／Standard Twin 23㎡＋Single 13.5㎡</p><p>Trip.com 8.9／10，博多站約5分鐘。房間採用 Simmons 床褥，Twin 明顯比已移除的 TKP 寬；目前官方日曆尚未開放2027年3月，所以先保留並設定追價，若總價超預算便淘汰。</p><div class="food-budget"><strong>五晚總價待公布</strong><span>2027年3月官方房價未開放</span></div><div class="food-actions"><a href="https://www.trip.com/hotels/fukuoka-hotel-detail-705185/toyo-hotel/" target="_blank" rel="noopener">Trip.com ↗</a><a href="https://toyohotel-fuk.co.jp/en/lodging/" target="_blank" rel="noopener">官方房型 ↗</a><a href="https://www.google.com/maps/search/?api=1&query=Toyo+Hotel+Fukuoka" target="_blank" rel="noopener">Google Maps ↗</a></div></article>
+        </div><details><summary>其他比較過嘅選項</summary><div class="food-grid"><article class="food-card"><div class="food-card-top"><span class="food-day">03 · 待追價</span><span class="food-mark">博多站</span></div><h3>Toyo Hotel 福岡</h3><p class="food-type">Economy Twin 18.5㎡／Standard Twin 23㎡＋Single 13.5㎡</p><p>Trip.com 8.9／10，博多站約5分鐘。房間採用 Simmons 床褥，Twin 明顯比已移除的 TKP 寬；目前官方日曆尚未開放2027年3月，所以先保留並設定追價，若總價超預算便淘汰。</p><div class="food-budget"><strong>五晚總價待公布</strong><span>2027年3月官方房價未開放</span></div><div class="food-actions"><a href="https://www.trip.com/hotels/fukuoka-hotel-detail-705185/toyo-hotel/" target="_blank" rel="noopener">Trip.com ↗</a><a href="https://toyohotel-fuk.co.jp/en/lodging/" target="_blank" rel="noopener">官方房型 ↗</a><a href="https://www.google.com/maps/search/?api=1&query=Toyo+Hotel+Fukuoka" target="_blank" rel="noopener">Google Maps ↗</a></div></article>
         <article class="food-card"><div class="food-card-top"><span class="food-day">04 · 價格後備</span><span class="food-mark pr">施工留意</span></div><h3>福岡蒙特埃馬納酒店</h3><p class="food-type">Basic Twin＋Queen Single · 各21㎡</p><p>Trip.com 9.0／10，四強中現價最低，渡邊通站約220米；但附近工程覆蓋整段旅程，預定施工時間為9:00–17:00（星期日暫停）。只考慮免費取消，訂前再確認房向及噪音。</p><div class="food-budget"><strong>約 HK$5,755／五晚</strong><span>Twin HK$599＋Single HK$552／晚</span></div><div class="food-actions"><a href="https://www.trip.com/w/dTKmFbZ39X2" target="_blank" rel="noopener">Trip.com ↗</a><a href="https://www.monte-hermana.jp/en/fukuoka/room/" target="_blank" rel="noopener">官方房型 ↗</a><a href="https://www.google.com/maps/search/?api=1&query=Hotel+Monte+Hermana+Fukuoka" target="_blank" rel="noopener">Google Maps ↗</a></div></article>
-      </div>
-      <aside class="food-caution"><strong>篩選結論：</strong>刪除 Toyoko Inn（Twin供應及旅程價格未核實）、TKP Sunlife（Twin只有15.4㎡，舒適度較弱）及未有具體合法單位與連費總價的民宿方向。現階段先以東急博多卓越作訂房基準；Toyo Hotel開放2027年3月後，再用同一房型、同一取消條款比較連稅總價。</aside>
+      </div></details><aside class="food-caution"><strong>篩選結論：</strong>刪除 Toyoko Inn（Twin供應及旅程價格未核實）、TKP Sunlife（Twin只有15.4㎡，舒適度較弱）及未有具體合法單位與連費總價的民宿方向。現階段先以東急博多卓越作訂房基準；Toyo Hotel開放2027年3月後，再用同一房型、同一取消條款比較連稅總價。</aside>
     </section>
 
     <section class="food-guide tax-guide" id="tax-free" aria-labelledby="tax-free-title">
@@ -331,7 +334,7 @@
       </div>
     </section>
 
-    <section class="closing">
+    <section class="notes"><h2>出發前預約清單</h2><div class="trip-checklist"><label><input type="checkbox" data-trip-check="0">訂酒店</label><label><input type="checkbox" data-trip-check="1">預約糸島包車</label><label><input type="checkbox" data-trip-check="2">預約 NIKUICHI</label><label><input type="checkbox" data-trip-check="3">預約 OCEAN HOUSE</label><label><input type="checkbox" data-trip-check="4">登記 Visit Japan Web</label><label><input type="checkbox" data-trip-check="5">出發前一星期查看天氣</label></div><p>勾選記錄只儲存在這部裝置。</p><h3>緊急資料</h3><p>日本警察：110 · 救護／消防：119</p><p>航班：UO600／UO669。酒店尚未預訂，確認後補上日文地址及入住時間。</p></section><a class="back-top" href="#top" aria-label="返回頂部">↑ 頂部</a><section class="closing">
       <p>不是要去最多地方，<br>是同行的人都玩得舒服。</p>
       <button class="share-button large" id="shareButtonBottom" type="button">傳給同行朋友</button>
       <span id="shareStatus" role="status" aria-live="polite"></span>
@@ -342,7 +345,6 @@
     <p>福岡六日五夜 · 2027年3月15–20日</p>
     <p>行程時間可按天氣、交通及當日體力調整。</p>
   </footer>
-  <script src="script.js?v=c7981043"></script>
+  <script src="script.js?v=mobile20261119"></script>
 </body>
 </html>
-
