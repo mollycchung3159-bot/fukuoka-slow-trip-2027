@@ -27,7 +27,7 @@
   let map, layer, tileLayer, selected = 'all', loading = false;
   const colors = ['#a44832', '#426b59', '#2c668e', '#825c91', '#9b6b21', '#555f69'];
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const labels = ['博多／中洲', '白金／大濠／天神', '相島＋住吉晚餐', '八女＋平尾晚餐', '太宰府＋天神', '酒店→國內線→國際線'];
+  const labels = ['博多／中洲', '白金／大濠／teamLab／天神', '相島＋住吉晚餐', '八女＋平尾晚餐', '太宰府＋天神', '酒店→國內線→國際線'];
   const stopData = () => window.tripMapStops();
   function popupNode(visits) {
     const root = document.createElement('div');
