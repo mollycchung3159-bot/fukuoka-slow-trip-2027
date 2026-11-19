@@ -1,6 +1,8 @@
 // Planning estimates checked 2026-11-19. These are not live or confirmed 2027 departures.
 // Keys refer to the shared place IDs. Ordering is derived from the visible daily timeline.
 window.TRIP_TRANSPORT = {
+ 'ohori>teamlab':['步行＋地下鐵＋步行','約35–50分鐘','湖邊步行至大濠公園站，乘空港線往唐人町，再步行約15–20分鐘到 BOSS E・ZO FUKUOKA 5樓；包含一般候車及館內上樓，13:30左右離開公園。','transit'],
+ 'teamlab>hotel':['步行＋地下鐵','約35–50分鐘','16:00左右離館，步行至唐人町，乘空港線往中洲川端，再步行回酒店；預留16:45左右到達，休息後才往天神。','transit'],
  'airport>hotel':['接駁巴士＋地下鐵＋步行','約35–55分鐘','國際線乘免費接駁巴士到國內線，轉空港線到中洲川端，再步行約3–5分鐘；不含入境及取行李。','transit'],
  'hotel>kushida':['步行','約12–18分鐘','沿川端方向慢行；不含午餐及入住時間。','walking'],
  'kushida>kawabata':['步行','約3–5分鐘','由神社走入川端通商店街。','walking'],
