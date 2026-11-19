@@ -343,6 +343,15 @@ summary { min-height: 44px; padding: .75rem; cursor: pointer; }
 .map-pin { color:#fff; background:var(--pin-color); border:2px solid #fff; border-radius:8px; text-align:center; box-shadow:0 2px 5px #0005; min-height:44px; font-family:sans-serif; line-height:1.2; }
 .map-pin b { display:block; font-size:15px; }.map-pin small { display:block; font-size:10px; white-space:nowrap; }
 .trip-marker { background:none; border:none; }
+.map-transport { margin:1.5rem 0; }
+.transport-disclaimer { font-size:.8rem; line-height:1.8; }
+.transport-legs { padding-left:1.35rem; margin:0; }
+.transport-leg { padding:.8rem 0; border-bottom:1px solid var(--line); overflow-wrap:anywhere; }
+.transport-leg strong { display:block; font-size:.9rem; line-height:1.7; }
+.transport-leg p { margin:.3rem 0; font-size:.8rem; line-height:1.8; }
+.transport-leg .transport-summary { color:var(--vermilion); font-weight:600; }
+.transport-leg a { font-size:.8rem; }
+.leaflet-popup-content .transport-summary { color:#a44832; }
 a { min-height:44px; min-width:44px; display:inline-flex; align-items:center; }
 .shop-button { border:1px solid var(--line); margin:.4rem .3rem .2rem 0; }
 .leaflet-control-zoom a { width:44px!important; height:44px!important; justify-content:center; }
