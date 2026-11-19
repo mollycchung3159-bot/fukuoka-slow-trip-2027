@@ -21,12 +21,13 @@ if('serviceWorker' in navigator){
  }).catch(()=>{document.getElementById('offlineStatus').textContent='未能儲存離線手帖，請保持連線並稍後重新開啟。';});
 }
 
-function setDayOpen(card, opening) {
+function setDayOpen(card, opening, followMap = true) {
   const button = card.querySelector('.day-summary');
   const detail = card.querySelector('.day-detail');
   card.classList.toggle('open', opening);
   button.setAttribute('aria-expanded', String(opening));
   detail.hidden = !opening;
+  if (opening && followMap) window.dispatchEvent(new CustomEvent("trip:day", {detail:{day:Number(card.id.slice(3))}}));
 }
 
 cards.forEach((card) => {
@@ -38,7 +39,10 @@ cards.forEach((card) => {
 });
 
 document.querySelectorAll('.day-jump a').forEach((link) => {
-  link.addEventListener('click', () => {
+  link.addEventListener('click', (event) => {
+    event.preventDefault();
+    history.pushState(null, '', link.hash);
+    document.getElementById('mapBlock').scrollIntoView({behavior:'smooth'});
     const card = document.querySelector(link.getAttribute('href'));
     if (card) setDayOpen(card, true);
   });
@@ -52,7 +56,7 @@ function openLinkedDay() {
 openLinkedDay();
 window.addEventListener('hashchange', openLinkedDay);
 
-document.getElementById('expandAll').addEventListener('click', () => cards.forEach(card => setDayOpen(card, true)));
+document.getElementById('expandAll').addEventListener('click', () => cards.forEach(card => setDayOpen(card, true, false)));
 document.getElementById('collapseAll').addEventListener('click', () => cards.forEach(card => setDayOpen(card, false)));
 function goToday(automatic = false) {
   const date = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Tokyo', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
@@ -102,3 +106,6 @@ async function shareTrip() {
 
 document.getElementById('shareButton').addEventListener('click', shareTrip);
 document.getElementById('shareButtonBottom').addEventListener('click', shareTrip);
+
+new ResizeObserver(entries => { document.documentElement.style.setProperty("--topbar-height", entries[0].target.getBoundingClientRect().height + "px"); }).observe(document.querySelector(".topbar"));
+
