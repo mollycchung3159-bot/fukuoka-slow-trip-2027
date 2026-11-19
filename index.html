@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@400;500;600;700&family=Noto+Serif+HK:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=agito20261119">
+  <link rel="stylesheet" href="styles.css?v=map20261119">
 </head>
 <body>
   <a class="skip-link" href="#itinerary">跳到行程</a>
@@ -79,6 +79,7 @@
         <p>點按日期可展開詳細時間。具體行程可按當日體力增加／刪減。</p>
       </div>
 
+      <div class="trip-map-block" id="mapBlock"><div class="map-header"><h3 id="mapHeading">每日行程地圖</h3><button type="button" id="mapAll" aria-pressed="false">全部</button></div><div id="tripMap" aria-label="每日景點位置地圖"></div><p id="mapStatus" role="status">正在載入地圖；下方地點清單亦可使用。</p><p class="map-legend"><span>● Day 1</span><span>● Day 2</span><span>● Day 3</span><span>● Day 4</span><span>● Day 5</span><span>● Day 6</span></p><details><summary>地點與導航清單</summary><ol id="mapStops"></ol></details><p class="map-note">虛線只示行程順序，並非道路或實際交通路線；區域標記為代表位置，未指定的小店不另作標記。</p></div>
       <nav class="day-jump" aria-label="快速前往每日行程">
         <a href="#day1"><span>一</span>3/15</a>
         <a href="#day2"><span>二</span>3/16</a>
@@ -97,11 +98,11 @@
           </button>
           <div class="day-detail">
             <ol class="timeline">
-              <li><time>11:55</time><div><strong>抵達福岡</strong><p>入境及取行李後，可在國際航廈乘巴士直達博多站；或乘免費接駁巴士到國內航廈，再轉地鐵到博多／祇園。按最終酒店位置揀路線。<a href="https://www.fukuoka-airport.jp/tw/help/" target="_blank" rel="noopener">機場交通資料 ↗</a></p></div></li>
-              <li><time>15:00</time><div><strong>入住、午餐</strong><p>酒店附近找烏冬或定食，不預約名店。</p></div></li>
-              <li><time>16:30</time><div><strong>博多老街散步</strong><p>櫛田神社、川端通商店街，慢慢行去博多運河城。</p></div></li>
-              <li><time>17:30</time><div><strong>Canal City 一番賞官方店</strong><p>到 South Building B1 抽一番賞，預留約45至60分鐘。出發前一兩日再查目標作品庫存；如果當日太攰或缺貨，改去博多巴士總站7樓官方店。<a href="https://bandainamco-am.co.jp/chara_shop/ichibankuji-official-shop/shop/cc-hakata/" target="_blank" rel="noopener">Canal City店 ↗</a>　<a href="https://bandainamco-am.co.jp/chara_shop/ichibankuji-official-shop/NEWS/hakata/news/HowTo_HakataBT.html" target="_blank" rel="noopener">後備店 ↗</a></p></div></li>
-              <li><time>19:30</time><div><strong>中洲或川端晚餐</strong><p>精神好才去屋台，排隊太長便轉居酒屋。</p></div></li>
+              <li data-stops="airport"><time>11:55</time><div><strong>抵達福岡</strong><p>入境及取行李後，可在國際航廈乘巴士直達博多站；或乘免費接駁巴士到國內航廈，再轉地鐵到博多／祇園。按最終酒店位置揀路線。<a href="https://www.fukuoka-airport.jp/tw/help/" target="_blank" rel="noopener">機場交通資料 ↗</a></p></div></li>
+              <li data-stops="hotel"><time>15:00</time><div><strong>入住、午餐</strong><p>酒店附近找烏冬或定食，不預約名店。</p></div></li>
+              <li data-stops="kushida kawabata"><time>16:30</time><div><strong>博多老街散步</strong><p>櫛田神社、川端通商店街，慢慢行去博多運河城。</p></div></li>
+              <li data-stops="canal"><time>17:30</time><div><strong>Canal City 一番賞官方店</strong><p>到 South Building B1 抽一番賞，預留約45至60分鐘。出發前一兩日再查目標作品庫存；如果當日太攰或缺貨，改去博多巴士總站7樓官方店。<a href="https://bandainamco-am.co.jp/chara_shop/ichibankuji-official-shop/shop/cc-hakata/" target="_blank" rel="noopener" class="shop-button">Canal City店 ↗</a> <a href="https://bandainamco-am.co.jp/chara_shop/ichibankuji-official-shop/NEWS/hakata/news/HowTo_HakataBT.html" target="_blank" rel="noopener" class="shop-button">後備店 ↗</a></p></div></li>
+              <li data-stops="nakasu"><time>19:30</time><div><strong>中洲或川端晚餐</strong><p>精神好才去屋台，排隊太長便轉居酒屋。</p></div></li>
             </ol>
             <div class="cost-box"><span>今日交通預算</span><strong>約 ¥400–1,000／人</strong><em>約 HK$20–50</em><small>按機場巴士或免費接駁巴士＋地下鐵計算；一番賞每抽價格按當期作品另計</small></div>
             <p class="soft-note">今天的任務只有一個：平安抵達，不用急着開始打卡。</p>
@@ -117,25 +118,25 @@
           <div class="day-detail" hidden>
             <figure class="place-image"><img src="assets/ohori-fukuoka-castle.webp" alt="大濠公園湖景與福岡城石垣的日系插畫" loading="lazy"><figcaption>大濠公園與福岡城跡 · 景點插畫</figcaption></figure>
             <ol class="timeline">
-              <li><time>10:45</time><div><strong><a href="#food-shirogane">白金茶房 Pancake brunch</a></strong><p>朋友指定想去。慢慢食一份 Pancake 配咖啡，建議先預約；不用再安排緊接着的午餐。</p></div></li>
-              <li><time>12:30</time><div><strong>大濠公園</strong><p>湖邊散步，不必完整繞圈；肚餓才在六本松吃小食。</p></div></li>
-              <li><time>14:30</time><div><strong>舞鶴公園或湖邊咖啡</strong><p>按體力二選一；美術館、日本庭園及天守台不逐個完成。</p></div></li>
-              <li><time>16:00</time><div><strong>返回酒店休息</strong><p>留一段空白時間，之後才去天神食飯或逛街。</p></div></li>
-              <li><time>18:00</time><div><strong>天神自由時間</strong><p>地下街、PARCO、岩田屋，約20:00吃晚餐。想坐低飲杯咖啡，可把 <a href="https://www.threads.com/share/_7LV19hn7" target="_blank" rel="noopener">Latte Art Mania 福岡 ↗</a> 當作順路候補；不特意趕去。</p></div></li>
+              <li data-stops="shirogane"><time>10:45</time><div><strong><a href="#food-shirogane">白金茶房 Pancake brunch</a></strong><p>朋友指定想去。慢慢食一份 Pancake 配咖啡，建議先預約；不用再安排緊接着的午餐。</p></div></li>
+              <li data-stops="ohori"><time>12:30</time><div><strong>大濠公園</strong><p>湖邊散步，不必完整繞圈；肚餓才在六本松吃小食。</p></div></li>
+              <li data-stops="castle"><time>14:30</time><div><strong>舞鶴公園或湖邊咖啡</strong><p>按體力二選一；美術館、日本庭園及天守台不逐個完成。</p></div></li>
+              <li data-stops="hotel"><time>16:00</time><div><strong>返回酒店休息</strong><p>留一段空白時間，之後才去天神食飯或逛街。</p></div></li>
+              <li data-stops="tenjin"><time>18:00</time><div><strong>天神自由時間</strong><p>地下街、PARCO、岩田屋，約20:00吃晚餐。想坐低飲杯咖啡，可把 <a href="https://www.threads.com/share/_7LV19hn7" target="_blank" rel="noopener">Latte Art Mania 福岡 ↗</a> 當作順路候補；不特意趕去。</p></div></li>
             </ol>
             <div class="cost-box"><span>白金茶房＋交通門票</span><strong>約 ¥2,640–3,590／人</strong><em>約 HK$132–180</em><small>Pancake brunch約¥1,800–2,500；另加地下鐵及美術館／庭園，按實際選項計算</small></div>
           </div>
         </article>
 
         <article class="day-card" id="day3"><button class="day-summary" type="button" aria-expanded="false"><span class="day-number">03</span><span class="day-title"><small>3月17日 · 星期三</small><strong>相島看貓，雞白湯晚餐</strong><em>10:00 出發 · 18:30 TATERU</em><small class="day-overview">相島 · JR／巴士／船 · 交通＋午晚餐 HK$214–336</small></span><span class="toggle" aria-hidden="true"></span></button><div class="day-detail" hidden><p class="soft-note">新宮町相島（あいのしま）正式取代糸島；當日不設包車，OCEAN HOUSE 退出主線。</p><ol class="timeline">
-<li><time>10:00</time><div><strong>酒店出發 → 博多站</strong><p>先吃早餐，帶水、簡單小食、現金及防風外套。依最終酒店位置乘地下鐵或步行到博多，預留約20–30分鐘。</p></div></li>
-<li><time>10:20左右</time><div><strong>JR博多 → 福工大前</strong><p>鹿兒島本線約17–25分鐘，成人現行參考單程¥340。這是搭車目標時段，非2027年已公布車次；目標10:45前到站，留時間走到巴士站。</p></div></li>
-<li><time>10:59</time><div><strong>マリンクス巴士 → 相島渡船場</strong><p>按2026年10月改點的平日相らんど線第1路線：福工大前10:59出發、11:10抵渡船場，約11分鐘、單程¥100。認清途經渡船場的班次，到埗買船票及排隊；此接駁只留20分鐘候船，若預期人多可提早出發步行到港口，勿依賴臨時追車。</p></div></li>
-<li><time>11:30</time><div><strong>新宮港 → 相島</strong><p>11:47抵達，船程約17分鐘、成人單程¥480。抵達後先向職員確認回程候船安排。</p></div></li>
-<li><time>12:00–15:15</time><div><strong>港邊看貓、午餐與散步</strong><p>留約三小時慢慢逛漁港及聚落，按當日營業選午餐；自備小食作後備。不以環島為目標，尊重居民、不追逐或強抱貓咪，餵食依現場規則。</p></div></li>
-<li><time>15:30</time><div><strong>回碼頭候船</strong><p>目標16:00相島開船、16:17抵新宮。提早排隊；17:30末班只作意外備援，不能保證有位。若風浪或身體不適，優先改13:50船提早回程。</p></div></li>
-<li><time>16:28</time><div><strong>巴士＋JR回博多</strong><p>按現行平日第2路線夏季班表，16:28碼頭出發，約十多分鐘回福工大前，再搭JR回博多；預留等車，約17:15–17:45抵博多。去住吉餐廳前可在博多站附近坐低休息。</p></div></li>
-<li><time>18:30</time><div><strong><a href="#food-tateru">博多鶏soba 建 TATERU · 必去</a></strong><p>保留阿奶指定晚餐，住吉1-6-8。由博多站步行約15–20分鐘；不設預約，預留排隊。若船班延誤，當晚按店舖營業情況順延，不趕18:00開門。</p></div></li></ol><div class="cost-box"><span>全日交通＋午餐＋TATERU</span><strong>約 ¥4,280–6,720／人</strong><em>約 HK$214–336</em><small>JR來回¥680＋巴士來回¥200＋船來回¥960＝¥1,840；另留市內交通¥440–880、午餐¥1,000–2,000、TATERU ¥1,000–2,000。早餐及額外咖啡另計；已包含於下方六日餐飲總額，不重複相加。</small></div><p class="soft-note">船班按現行3–10月表，巴士按2026年10月平日表；2027年3月17日並未保證沿用，出發前一星期及當朝查運航。錯過11:30船便改市內慢遊，不為14:30船趕行程。<a href="https://www.town.shingu.fukuoka.jp/kurashi/doro_kotsuu/2/2/3257.html" target="_blank" rel="noopener">船班 ↗</a><a href="https://www.town.shingu.fukuoka.jp/kurashi/doro_kotsuu/2/1/6926.html" target="_blank" rel="noopener">平日巴士 ↗</a><a href="https://www.google.com/maps/search/?api=1&query=Ainoshima+Shingu+Fukuoka" target="_blank" rel="noopener">相島地圖 ↗</a></p><p class="soft-note rain">停航／雨天：改市內咖啡、博多購物或室內展覽，18:30 TATERU 照舊；不放到回港日補去。</p></div></article>
+<li data-stops="hotel"><time>10:00</time><div><strong>酒店出發 → 博多站</strong><p>先吃早餐，帶水、簡單小食、現金及防風外套。依最終酒店位置乘地下鐵或步行到博多，預留約20–30分鐘。</p></div></li>
+<li data-stops="hakata"><time>10:20左右</time><div><strong>JR博多 → 福工大前</strong><p>鹿兒島本線約17–25分鐘，成人現行參考單程¥340。這是搭車目標時段，非2027年已公布車次；目標10:45前到站，留時間走到巴士站。</p></div></li>
+<li data-stops="fukkodai shingu"><time>10:59</time><div><strong>マリンクス巴士 → 相島渡船場</strong><p>按2026年10月改點的平日相らんど線第1路線：福工大前10:59出發、11:10抵渡船場，約11分鐘、單程¥100。認清途經渡船場的班次，到埗買船票及排隊；此接駁只留20分鐘候船，若預期人多可提早出發步行到港口，勿依賴臨時追車。</p></div></li>
+<li data-stops="ainoshima"><time>11:30</time><div><strong>新宮港 → 相島</strong><p>11:47抵達，船程約17分鐘、成人單程¥480。抵達後先向職員確認回程候船安排。</p></div></li>
+<li data-stops="ainoshima"><time>12:00–15:15</time><div><strong>港邊看貓、午餐與散步</strong><p>留約三小時慢慢逛漁港及聚落，按當日營業選午餐；自備小食作後備。不以環島為目標，尊重居民、不追逐或強抱貓咪，餵食依現場規則。</p></div></li>
+<li data-stops="ainoshima"><time>15:30</time><div><strong>回碼頭候船</strong><p>目標16:00相島開船、16:17抵新宮。提早排隊；17:30末班只作意外備援，不能保證有位。若風浪或身體不適，優先改13:50船提早回程。</p></div></li>
+<li data-stops="shingu fukkodai hakata"><time>16:28</time><div><strong>巴士＋JR回博多</strong><p>按現行平日第2路線夏季班表，16:28碼頭出發，約十多分鐘回福工大前，再搭JR回博多；預留等車，約17:15–17:45抵博多。去住吉餐廳前可在博多站附近坐低休息。</p></div></li>
+<li data-stops="tateru"><time>18:30</time><div><strong><a href="#food-tateru">博多鶏soba 建 TATERU · 必去</a></strong><p>保留阿奶指定晚餐，住吉1-6-8。由博多站步行約15–20分鐘；不設預約，預留排隊。若船班延誤，當晚按店舖營業情況順延，不趕18:00開門。</p></div></li></ol><div class="cost-box"><span>全日交通＋午餐＋TATERU</span><strong>約 ¥4,280–6,720／人</strong><em>約 HK$214–336</em><small>JR來回¥680＋巴士來回¥200＋船來回¥960＝¥1,840；另留市內交通¥440–880、午餐¥1,000–2,000、TATERU ¥1,000–2,000。早餐及額外咖啡另計；已包含於下方六日餐飲總額，不重複相加。</small></div><p class="soft-note">船班按現行3–10月表，巴士按2026年10月平日表；2027年3月17日並未保證沿用，出發前一星期及當朝查運航。錯過11:30船便改市內慢遊，不為14:30船趕行程。<a href="https://www.town.shingu.fukuoka.jp/kurashi/doro_kotsuu/2/2/3257.html" target="_blank" rel="noopener">船班 ↗</a><a href="https://www.town.shingu.fukuoka.jp/kurashi/doro_kotsuu/2/1/6926.html" target="_blank" rel="noopener">平日巴士 ↗</a><a href="https://www.google.com/maps/search/?api=1&query=Ainoshima+Shingu+Fukuoka" target="_blank" rel="noopener">相島地圖 ↗</a></p><p class="soft-note rain">停航／雨天：改市內咖啡、博多購物或室內展覽，18:30 TATERU 照舊；不放到回港日補去。</p></div></article>
 
         <article class="day-card" id="day4">
           <button class="day-summary" type="button" aria-expanded="false">
@@ -146,11 +147,11 @@
           <div class="day-detail" hidden>
             <figure class="place-image"><img src="assets/dazaifu.webp" alt="傳統神社示意插畫，非福島八幡宮實景" loading="lazy"><figcaption>八女行程 · 神社示意插畫（非實景）</figcaption></figure>
             <ol class="timeline">
-              <li><time>11:15</time><div><strong>福島八幡宮 · 必去</strong><p>先參拜，再到授與所找透明「愛猫守り」。授與所一般9:00–16:30、星期三休息；款式及庫存會變，出發前一星期再查官方公告。<a href="https://fukushimahachimangu.or.jp/" target="_blank" rel="noopener">官方網站 ↗</a></p></div></li>
-              <li><time>12:15</time><div><strong><a href="#food-katsukiya">かつきや 八女本店</a></strong><p>就在神社境內，午餐可吃季節おこわ；想跟帖文可選八女茶甜品或焙茶 parfait，實際供應按當日餐牌。<a href="https://www.google.com/maps/search/?api=1&query=%E3%81%8B%E3%81%A4%E3%81%8D%E3%82%84+%E5%85%AB%E5%A5%B3%E6%9C%AC%E5%BA%97" target="_blank" rel="noopener">Google Maps ↗</a></p></div></li>
-              <li><time>14:00</time><div><strong>八女福島白壁老街</strong><p>由神社步行約兩分鐘，慢慢看傳統町家；按體力再選八女傳統工藝館。</p></div></li>
-              <li><time>16:15</time><div><strong>返回福岡市</strong><p>公共交通全程約80–100分鐘；按班車時間出發，為晚上燒肉預留回程餘裕。</p></div></li>
-              <li><time>19:00</time><div><strong><a href="#food-agito">燒肉晚餐 · AGITO HIRAO</a></strong><p>八女回程後先到酒店稍休；由西鐵福岡（天神）站乘普通列車到西鐵平尾站，再步行約3分鐘。由市區酒店至餐廳預留30–45分鐘，建議預約19:00。以厚切牛舌與和牛拼盤分享，預算每人¥6,000–9,000（HK$300–450）。<a href="https://www.tablecheck.com/ja/agitohirao/reserve/message" target="_blank" rel="noopener">官方訂位 ↗</a></p></div></li>
+              <li data-stops="fukushima"><time>11:15</time><div><strong>福島八幡宮 · 必去</strong><p>先參拜，再到授與所找透明「愛猫守り」。授與所一般9:00–16:30、星期三休息；款式及庫存會變，出發前一星期再查官方公告。<a href="https://fukushimahachimangu.or.jp/" target="_blank" rel="noopener">官方網站 ↗</a></p></div></li>
+              <li data-stops="katsukiya"><time>12:15</time><div><strong><a href="#food-katsukiya">かつきや 八女本店</a></strong><p>就在神社境內，午餐可吃季節おこわ；想跟帖文可選八女茶甜品或焙茶 parfait，實際供應按當日餐牌。<a href="https://www.google.com/maps/search/?api=1&query=%E3%81%8B%E3%81%A4%E3%81%8D%E3%82%84+%E5%85%AB%E5%A5%B3%E6%9C%AC%E5%BA%97" target="_blank" rel="noopener">Google Maps ↗</a></p></div></li>
+              <li data-stops="yame"><time>14:00</time><div><strong>八女福島白壁老街</strong><p>由神社步行約兩分鐘，慢慢看傳統町家；按體力再選八女傳統工藝館。</p></div></li>
+              <li data-stops="hotel"><time>16:15</time><div><strong>返回福岡市</strong><p>公共交通全程約80–100分鐘；按班車時間出發，為晚上燒肉預留回程餘裕。</p></div></li>
+              <li data-stops="agito"><time>19:00</time><div><strong><a href="#food-agito">燒肉晚餐 · AGITO HIRAO</a></strong><p>八女回程後先到酒店稍休；由西鐵福岡（天神）站乘普通列車到西鐵平尾站，再步行約3分鐘。由市區酒店至餐廳預留30–45分鐘，建議預約19:00。以厚切牛舌與和牛拼盤分享，預算每人¥6,000–9,000（HK$300–450）。<a href="https://www.tablecheck.com/ja/agitohirao/reserve/message" target="_blank" rel="noopener">官方訂位 ↗</a></p></div></li>
             </ol>
             <div class="cost-box"><span>交通＋午餐甜品＋燒肉</span><strong>約 ¥10,000–15,000／人</strong><em>約 HK$500–750</em><small>御守初穗料另計；交通按公共交通估算，包車則另行報價</small></div>
             <p class="soft-note">今天專心逛八女，晚上留給燒肉；太宰府與 Loop a Bread 已正式安排到 Day 5。</p>
@@ -160,11 +161,11 @@
         <article class="day-card" id="day5">
  <button class="day-summary" type="button" aria-expanded="false"><span class="day-number">05</span><span class="day-title"><small>3月19日 · 星期五</small><strong>太宰府，明太子法包與參道</strong><em>10:15 出發 · Loop a Bread 必去</em><small class="day-overview">太宰府／天神 · 西鐵／步行 · 交通＋法包 HK$100–150</small></span><span class="toggle" aria-hidden="true"></span></button>
  <div class="day-detail" hidden><figure class="place-image"><img src="assets/dazaifu.webp" alt="太宰府行程的傳統神社示意插畫，非現場照片" loading="lazy"><figcaption>太宰府 · 神社示意插畫</figcaption></figure><ol class="timeline">
- <li><time>10:15</time><div><strong>前往太宰府</strong><p>由西鐵福岡（天神）站乘天神大牟田線，在西鐵二日市轉太宰府線；酒店至目的地整體預留約60–75分鐘，含步行、候車及轉車。<a href="https://dazaifu.org/access/" target="_blank" rel="noopener">交通資料 ↗</a></p></div></li>
- <li><time>11:15</time><div><strong><a href="#food-loop">Loop a Bread · 必去</a></strong><p>先買明太子法包，避免逛完才遇售罄。地址：太宰府市宰府2-7-5 Nishikimachi01；一般9:00–17:00、星期一及二休息。預留現金，款式與庫存依當日供應。</p></div></li>
- <li><time>12:00</time><div><strong>太宰府天滿宮與參道</strong><p>慢慢參拜、看建築、逛小店；肚餓再補一份輕午餐，梅枝餅按胃口分享。</p></div></li>
+ <li data-stops="tenjin dazaifuStation"><time>10:15</time><div><strong>前往太宰府</strong><p>由西鐵福岡（天神）站乘天神大牟田線，在西鐵二日市轉太宰府線；酒店至目的地整體預留約60–75分鐘，含步行、候車及轉車。<a href="https://dazaifu.org/access/" target="_blank" rel="noopener">交通資料 ↗</a></p></div></li>
+ <li data-stops="loop"><time>11:15</time><div><strong><a href="#food-loop">Loop a Bread · 必去</a></strong><p>先買明太子法包，避免逛完才遇售罄。地址：太宰府市宰府2-7-5 Nishikimachi01；一般9:00–17:00、星期一及二休息。預留現金，款式與庫存依當日供應。</p></div></li>
+ <li data-stops="tenmangu"><time>12:00</time><div><strong>太宰府天滿宮與參道</strong><p>慢慢參拜、看建築、逛小店；肚餓再補一份輕午餐，梅枝餅按胃口分享。</p></div></li>
  <li><time>14:00</time><div><strong>坐低飲茶</strong><p>預留一小時休息；不加寶滿宮竈門神社或博物館，以步行範圍內的小店為主。</p></div></li>
- <li><time>15:00</time><div><strong>回天神／酒店</strong><p>約16:00–16:30回市區，選購物或休息；傍晚整理行李，晚餐按位置自由選。</p></div></li>
+ <li data-stops="tenjin hotel"><time>15:00</time><div><strong>回天神／酒店</strong><p>約16:00–16:30回市區，選購物或休息；傍晚整理行李，晚餐按位置自由選。</p></div></li>
  </ol><div class="cost-box"><span>往返交通＋法包</span><strong>約 ¥2,000–3,000／人</strong><em>約 HK$100–150</em><small>交通規劃額度約¥1,500–2,000；法包小食¥500–1,000。午餐、咖啡及晚餐另計，票價以出發時為準。</small></div><p class="soft-note">Loop a Bread 係正式必去；出發前再查臨時休息，若需換日，優先與星期三貓島對調，並重新核對船班。星期一、二不安排這間店。</p></div></article>
 
         <article class="day-card" id="day6">
@@ -175,11 +176,11 @@
           </button>
           <div class="day-detail" hidden>
             <ol class="timeline">
-              <li><time>上午</time><div><strong>早餐、整理行李</strong><p>10:30至11:00退房。</p></div></li>
-              <li><time>11:30</time><div><strong>國內線 SWEETS HALL</strong><p>預留約45分鐘買手信，不在機場臨時加餐。</p></div></li>
-              <li><time>12:20</time><div><strong>前往國際航廈</strong><p>乘免費接駁巴士，建議最遲13:00抵達；如有退稅貨品，先不要寄艙。</p></div></li>
-              <li><time>13:00</time><div><strong>退稅確認（如有）</strong><p>帶齊護照及所有退稅貨品，在3樓出發大堂先用稅關 KIOSK 或 Visit Japan Web 完成判定；RED 判定按職員指示檢查，完成後才辦理登機及寄艙。</p></div></li>
-              <li><time>16:05</time><div><strong>起飛回港</strong><p>預計19:05抵達香港。</p></div></li>
+              <li data-stops="hotel"><time>上午</time><div><strong>早餐、整理行李</strong><p>10:30至11:00退房。</p></div></li>
+              <li data-stops="sweets"><time>11:30</time><div><strong>國內線 SWEETS HALL</strong><p>預留約45分鐘買手信，不在機場臨時加餐。</p></div></li>
+              <li data-stops="airport"><time>12:20</time><div><strong>前往國際航廈</strong><p>乘免費接駁巴士，建議最遲13:00抵達；如有退稅貨品，先不要寄艙。</p></div></li>
+              <li data-stops="airport"><time>13:00</time><div><strong>退稅確認（如有）</strong><p>帶齊護照及所有退稅貨品，在3樓出發大堂先用稅關 KIOSK 或 Visit Japan Web 完成判定；RED 判定按職員指示檢查，完成後才辦理登機及寄艙。</p></div></li>
+              <li data-stops="airport"><time>16:05</time><div><strong>起飛回港</strong><p>預計19:05抵達香港。</p></div></li>
             </ol>
             <div class="cost-box"><span>機場交通</span><strong>約 ¥260–500／人</strong><em>約 HK$13–25</em><small>按地下鐵或國際航廈直達巴士計；航廈接駁巴士免費</small></div>
             <p class="soft-note">穩妥版本：略過國內線購物，退房後直接前往國際航廈。</p>
@@ -245,7 +246,7 @@
         </article>
       </div>
 
-      <details class="selection-record"><summary>篩選紀錄</summary><p>Day 4 燒肉已按朋友選擇改為 AGITO HIRAO，NIKUICHI 移出主線；にくまる只作同晚備選，不另加一晚燒肉。先前候選評語不代表實際用餐結果；本次以厚切牛舌體驗為選擇重點。</p></details>
+      
     </section>
 
     <section class="notes" id="daytrip-options"><h2>這次選相島，門司港留待下次</h2><p>正式郊遊日為相島、八女及太宰府。糸島包車與 OCEAN HOUSE 已移出主線，相關預約項目及包車費已刪除。門司港／皿倉山亦不計入六日預算；天氣不佳時採用市內後備，不額外增加長途日。</p></section><section class="food-guide stay-guide" id="stay" aria-labelledby="stay-title">
@@ -255,12 +256,12 @@
         <p>2027年3月15日入住、20日退房。現階段以 Twin 兩位成人＋Single 一位成人作比較；選址不再限於博多站附近，只要晚間安全、附近有餐廳／便利店，而且日常步行交通可接受即可。</p>
       </div>
       <div class="stay-budget"><strong>住宿總預算 HK$7,500–8,000</strong><span>最終保留4間。三間已有 Trip.com 同日期參考價，按 Twin＋Single、五晚、不含早餐的可取消方案約 HK$5,755–6,605；Toyo Hotel 的2027年3月官方房價尚未開放。另留住宿稅及價格浮動空間，實際以結帳頁連稅總額為準。</span></div>
-      <aside class="stay-status">目前基準：東急博多卓越（中洲）｜狀態：未訂</aside><div class="food-grid">
-        <article class="food-card featured"><div class="food-card-top"><span class="food-day">01 · 綜合首選</span><span class="food-mark">中洲</span></div><h3>東急博多卓越大酒店</h3><p class="food-type">標準雙床 18.5–19.6㎡＋標準單人 18.3–19.6㎡</p><p>Trip.com 9.1／10。中洲川端站約130米，樓下餐飲、Donki及河畔散步都方便。設施略有年份，但兩間房面積平均、價格已核實，位置與風險最平衡。</p><div class="food-budget"><strong>約 HK$5,900／五晚</strong><span>Twin HK$664＋Single HK$516／晚</span></div><div class="food-actions"><a href="https://www.trip.com/w/torJcZX39X2" target="_blank" rel="noopener">Trip.com ↗</a><a href="https://www.tokyuhotels.co.jp/en/hakata-e/room/index.html" target="_blank" rel="noopener">官方房型 ↗</a><a href="https://www.google.com/maps/search/?api=1&query=Hakata+Excel+Hotel+Tokyu" target="_blank" rel="noopener">Google Maps ↗</a></div></article>
+      <aside class="stay-status">目前基準：<span data-hotel-name>東急博多卓越</span>（中洲）｜狀態：<span data-hotel-status>暫定／未訂</span></aside><div class="food-grid">
+        <article class="food-card featured"><div class="food-card-top"><span class="food-day">01 · 綜合首選</span><span class="food-mark">中洲</span></div><h3 data-hotel-name>東急博多卓越</h3><p class="food-type">標準雙床 18.5–19.6㎡＋標準單人 18.3–19.6㎡</p><p>Trip.com 9.1／10。中洲川端站約130米，樓下餐飲、Donki及河畔散步都方便。設施略有年份，但兩間房面積平均、價格已核實，位置與風險最平衡。</p><div class="food-budget"><strong>約 HK$5,900／五晚</strong><span>Twin HK$664＋Single HK$516／晚</span></div><div class="food-actions"><a href="https://www.trip.com/w/torJcZX39X2" target="_blank" rel="noopener">Trip.com ↗</a><a href="https://www.tokyuhotels.co.jp/en/hakata-e/room/index.html" target="_blank" rel="noopener">官方房型 ↗</a><a data-hotel-map href="https://www.google.com/maps/search/?api=1&query=Hakata+Excel+Hotel+Tokyu" target="_blank" rel="noopener">Google Maps ↗</a></div></article>
         </div><details><summary>其他比較過嘅選項</summary><div class="food-grid"><article class="food-card"><div class="food-card-top"><span class="food-day">02 · 舒適首選</span><span class="food-mark">天神／大名</span></div><h3>福岡蒙特利拉蘇瑞酒店</h3><p class="food-type">標準雙床 22.2–25.6㎡＋標準單人約15㎡</p><p>Trip.com 8.9／10。赤坂站約410米、天神站約480米，購物及餐廳集中；Twin 是四強中最寬敞。缺點是酒店較有年份、Single 較細，亦有個別隔音及清潔評語。</p><div class="food-budget"><strong>約 HK$6,605／五晚</strong><span>Twin HK$686＋Single HK$635／晚</span></div><div class="food-actions"><a href="https://www.trip.com/w/rgJASog49X2" target="_blank" rel="noopener">Trip.com ↗</a><a href="https://www.hotelmonterey.co.jp/en/lasoeur_fukuoka/stay/room/145952056a06ba3.html" target="_blank" rel="noopener">官方房型 ↗</a><a href="https://www.google.com/maps/search/?api=1&query=Hotel+Monterey+La+Soeur+Fukuoka" target="_blank" rel="noopener">Google Maps ↗</a></div></article>
         <article class="food-card"><div class="food-card-top"><span class="food-day">03 · 待追價</span><span class="food-mark">博多站</span></div><h3>Toyo Hotel 福岡</h3><p class="food-type">Economy Twin 18.5㎡／Standard Twin 23㎡＋Single 13.5㎡</p><p>Trip.com 8.9／10，博多站約5分鐘。房間採用 Simmons 床褥，Twin 明顯比已移除的 TKP 寬；目前官方日曆尚未開放2027年3月，所以先保留並設定追價，若總價超預算便淘汰。</p><div class="food-budget"><strong>五晚總價待公布</strong><span>2027年3月官方房價未開放</span></div><div class="food-actions"><a href="https://www.trip.com/hotels/fukuoka-hotel-detail-705185/toyo-hotel/" target="_blank" rel="noopener">Trip.com ↗</a><a href="https://toyohotel-fuk.co.jp/en/lodging/" target="_blank" rel="noopener">官方房型 ↗</a><a href="https://www.google.com/maps/search/?api=1&query=Toyo+Hotel+Fukuoka" target="_blank" rel="noopener">Google Maps ↗</a></div></article>
         <article class="food-card"><div class="food-card-top"><span class="food-day">04 · 價格後備</span><span class="food-mark pr">施工留意</span></div><h3>福岡蒙特埃馬納酒店</h3><p class="food-type">Basic Twin＋Queen Single · 各21㎡</p><p>Trip.com 9.0／10，四強中現價最低，渡邊通站約220米；但附近工程覆蓋整段旅程，預定施工時間為9:00–17:00（星期日暫停）。只考慮免費取消，訂前再確認房向及噪音。</p><div class="food-budget"><strong>約 HK$5,755／五晚</strong><span>Twin HK$599＋Single HK$552／晚</span></div><div class="food-actions"><a href="https://www.trip.com/w/dTKmFbZ39X2" target="_blank" rel="noopener">Trip.com ↗</a><a href="https://www.monte-hermana.jp/en/fukuoka/room/" target="_blank" rel="noopener">官方房型 ↗</a><a href="https://www.google.com/maps/search/?api=1&query=Hotel+Monte+Hermana+Fukuoka" target="_blank" rel="noopener">Google Maps ↗</a></div></article>
-      </div></details><aside class="food-caution"><strong>篩選結論：</strong>刪除 Toyoko Inn（Twin供應及旅程價格未核實）、TKP Sunlife（Twin只有15.4㎡，舒適度較弱）及未有具體合法單位與連費總價的民宿方向。現階段先以東急博多卓越作訂房基準；Toyo Hotel開放2027年3月後，再用同一房型、同一取消條款比較連稅總價。</aside>
+      </div></details><aside class="food-caution"><strong>篩選結論：</strong>刪除 Toyoko Inn（Twin供應及旅程價格未核實）、TKP Sunlife（Twin只有15.4㎡，舒適度較弱）及未有具體合法單位與連費總價的民宿方向。現階段先以<span data-hotel-name>東急博多卓越</span>作訂房基準；Toyo Hotel開放2027年3月後，再用同一房型、同一取消條款比較連稅總價。</aside>
     </section>
 
     <section class="food-guide tax-guide" id="tax-free" aria-labelledby="tax-free-title">
@@ -298,7 +299,7 @@
       </div>
     </section>
 
-    <section class="notes"><h2>出發前預約清單</h2><div class="trip-checklist"><label><input type="checkbox" data-trip-check="0">訂酒店</label><label><input type="checkbox" data-trip-check="cat-ferry">核對相島船班、巴士及回程</label><label><input type="checkbox" data-trip-check="agito-reserve">預約 Day 4 AGITO HIRAO 19:00</label><label><input type="checkbox" data-trip-check="cat-weather">出發當朝查相島是否停航</label><label><input type="checkbox" data-trip-check="4">登記 Visit Japan Web</label><label><input type="checkbox" data-trip-check="5">出發前一星期查看天氣</label></div><p>勾選記錄只儲存在這部裝置。</p><h3>緊急資料 · 可離線查看</h3><div class="emergency-card"><p><a href="tel:110">警察 110</a> <a href="tel:119">救護／消防 119</a></p><p><a href="tel:+8521868">香港入境處24小時協助：+852 1868</a></p><p><a href="tel:+815038162787">日本旅客支援：050-3816-2787</a>（24小時）</p><p>住宿基準（未訂）：博多エクセルホテル東急<br>〒810-0801 福岡県福岡市博多区中洲4-6-7<br><a href="tel:+81922620109">酒店電話：092-262-0109</a></p><p>此地址為目前比較基準，並非已確認住宿；入住時間以最終訂單為準。</p><p>3/15 UO600：HKG 07:50 → FUK 11:55<br>3/20 UO669：FUK 16:05 → HKG 19:05（當地時間）</p><p><a href="https://www.tokyuhotels.co.jp/hakata-e/access/index.html" target="_blank" rel="noopener">酒店地址來源</a> · <a href="https://www.immd.gov.hk/eng/services/Assistance_Outside_Hong_Kong.html" target="_blank" rel="noopener">入境處協助資料</a> · <a href="https://www.jnto.go.jp/emergency/index.html" target="_blank" rel="noopener">日本緊急支援</a></p></div><h3 id="budget-total">六日總預算／人</h3><p>以基準酒店五晚、不含早餐方案計；¥1 ≈ HK$0.05。已扣除糸島包車，每人交通已包含相島船票及巴士。</p><div class="budget-table"><table><thead><tr><th>項目</th><th>日圓／人</th><th>港幣／人</th></tr></thead><tbody><tr><th>住宿：Twin每人／五晚</th><td>¥33,200</td><td>HK$1,660</td></tr><tr><th>住宿：Single／五晚</th><td>¥51,600</td><td>HK$2,580</td></tr><tr><th>六日交通及一般門票</th><td>¥8,500–12,500</td><td>HK$425–625</td></tr><tr><th>六日餐飲（含AGITO、TATERU、白金茶房及法包）</th><td>¥25,500–39,000</td><td>HK$1,275–1,950</td></tr><tr><th>Twin每人小計／機票前</th><td>¥67,200–84,700</td><td>HK$3,360–4,235</td></tr><tr><th>Single每人小計／機票前</th><td>¥85,600–103,100</td><td>HK$4,280–5,155</td></tr></tbody></table></div><label class="budget-people">你的來回機票（HK$，含行李）<input id="flightCost" type="number" min="0" max="100000" step="1" inputmode="decimal" placeholder="未提供"></label><p id="flightStatus" role="status"></p><div class="budget-table"><table><thead><tr><th>每人總額</th><th>日圓等值</th><th>港幣</th></tr></thead><tbody><tr><th>Twin每人</th><td id="twinYen"></td><td id="twinHkd"></td></tr><tr><th>Single每人</th><td id="singleYen"></td><td id="singleHkd"></td></tr></tbody></table></div><p><strong>建議準備額（機票前）：Twin每人HK$3,700–4,700；Single每人HK$4,800–5,700。</strong>已在小計上留約10%彈性；未輸入機票時，總額只顯示機票前費用。機票金額只存在此裝置。</p><p>住宿沿用未訂參考價；交通、餐飲是規劃額度，已含每日行程費用，不再逐日重複相加。不含購物、一番賞、御守、保險及住宿稅；加入機票後仍不包含以上項目。¥為港元按預算匯率換算，並非實際機票付款貨幣。</p><h3>離線手帖</h3><p id="offlineStatus" role="status">首次連線開啟後，會儲存行程及插畫供離線查看。</p><p>瀏覽器選單可選「加到主畫面」。離線時地圖、訂座及外部連結仍需要網絡；瀏覽器清除網站資料後需重新下載。</p></section><a class="back-top" href="#top" aria-label="返回頂部">↑ 頂部</a><section class="closing">
+    <section class="notes"><h2>出發前預約清單</h2><div class="trip-checklist"><label><input type="checkbox" data-trip-check="0">訂酒店</label><label><input type="checkbox" data-trip-check="cat-ferry">核對相島船班、巴士及回程</label><label><input type="checkbox" data-trip-check="agito-reserve">預約 Day 4 AGITO HIRAO 19:00</label><label><input type="checkbox" data-trip-check="cat-weather">出發當朝查相島是否停航</label><label><input type="checkbox" data-trip-check="4">登記 Visit Japan Web</label><label><input type="checkbox" data-trip-check="5">出發前一星期查看天氣</label></div><p>勾選記錄只儲存在這部裝置。</p><h3>緊急資料 · 可離線查看</h3><div class="emergency-card"><p><a href="tel:110">警察 110</a> <a href="tel:119">救護／消防 119</a></p><p><a href="tel:+8521868">香港入境處24小時協助：+852 1868</a></p><p><a href="tel:+815038162787">日本旅客支援：050-3816-2787</a>（24小時）</p><p>住宿基準（<span data-hotel-status>暫定／未訂</span>）：<span data-hotel-japanese>博多エクセルホテル東急</span><br><span data-hotel-address>〒810-0801 福岡県福岡市博多区中洲4-6-7</span><br>酒店電話：<a data-hotel-phone href="tel:+81922620109">092-262-0109</a></p><p>此地址為目前比較基準，並非已確認住宿；入住時間以最終訂單為準。</p><p>3/15 UO600：HKG 07:50 → FUK 11:55<br>3/20 UO669：FUK 16:05 → HKG 19:05（當地時間）</p><p><a href="https://www.tokyuhotels.co.jp/hakata-e/access/index.html" target="_blank" rel="noopener">酒店地址來源</a> · <a href="https://www.immd.gov.hk/eng/services/Assistance_Outside_Hong_Kong.html" target="_blank" rel="noopener">入境處協助資料</a> · <a href="https://www.jnto.go.jp/emergency/index.html" target="_blank" rel="noopener">日本緊急支援</a></p></div><h3 id="budget-total">六日總預算／人</h3><p>以基準酒店五晚、不含早餐方案計；¥1 ≈ HK$0.05。已扣除糸島包車，每人交通已包含相島船票及巴士。</p><div class="budget-table"><table><thead><tr><th>項目</th><th>日圓／人</th><th>港幣／人</th></tr></thead><tbody><tr><th>住宿：Twin每人／五晚</th><td>¥33,200</td><td>HK$1,660</td></tr><tr><th>住宿：Single／五晚</th><td>¥51,600</td><td>HK$2,580</td></tr><tr><th>六日交通及一般門票</th><td>¥8,500–12,500</td><td>HK$425–625</td></tr><tr><th>六日餐飲（含AGITO、TATERU、白金茶房及法包）</th><td>¥25,500–39,000</td><td>HK$1,275–1,950</td></tr><tr><th>Twin每人小計／機票前</th><td>¥67,200–84,700</td><td>HK$3,360–4,235</td></tr><tr><th>Single每人小計／機票前</th><td>¥85,600–103,100</td><td>HK$4,280–5,155</td></tr></tbody></table></div><label class="budget-people">你的來回機票（HK$，含行李）<input id="flightCost" type="number" min="0" max="100000" step="1" inputmode="decimal" placeholder="未提供"></label><p id="flightStatus" role="status"></p><div class="budget-table"><table><thead><tr><th>每人總額</th><th>日圓等值</th><th>港幣</th></tr></thead><tbody><tr><th>Twin每人</th><td id="twinYen"></td><td id="twinHkd"></td></tr><tr><th>Single每人</th><td id="singleYen"></td><td id="singleHkd"></td></tr></tbody></table></div><p><strong>建議準備額（機票前）：Twin每人HK$3,700–4,700；Single每人HK$4,800–5,700。</strong>已在小計上留約10%彈性；未輸入機票時，總額只顯示機票前費用。機票金額只存在此裝置。</p><p>住宿沿用未訂參考價；交通、餐飲是規劃額度，已含每日行程費用，不再逐日重複相加。不含購物、一番賞、御守、保險及住宿稅；加入機票後仍不包含以上項目。¥為港元按預算匯率換算，並非實際機票付款貨幣。</p><h3>離線手帖</h3><p id="offlineStatus" role="status">首次連線開啟後，會儲存行程及插畫供離線查看。</p><p>瀏覽器選單可選「加到主畫面」。離線時地圖、訂座及外部連結仍需要網絡；瀏覽器清除網站資料後需重新下載。</p></section><a class="back-top" href="#top" aria-label="返回頂部">↑ 頂部</a><section class="notes"><details class="selection-record"><summary>篩選紀錄</summary><p>Day 4 燒肉已按朋友選擇改為 AGITO HIRAO，NIKUICHI 移出主線；にくまる只作同晚備選，不另加一晚燒肉。先前候選評語不代表實際用餐結果；本次以厚切牛舌體驗為選擇重點。</p></details></section><section class="closing">
       <p>不是要去最多地方，<br>是同行的人都玩得舒服。</p>
       <button class="share-button large" id="shareButtonBottom" type="button">傳給同行朋友</button>
       <span id="shareStatus" role="status" aria-live="polite"></span>
@@ -309,6 +310,9 @@
     <p>福岡六日五夜 · 2027年3月15–20日</p>
     <p>行程時間可按天氣、交通及當日體力調整。</p>
   </footer>
-  <script src="script.js?v=agito20261119"></script>
+  <script src="trip-places.js?v=map20261119"></script>
+  <script src="trip-map.js?v=map20261119"></script>
+  <script src="script.js?v=map20261119"></script>
 </body>
 </html>
+
