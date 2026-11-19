@@ -1,5 +1,5 @@
-const CACHE='fukuoka-map-20261119-v1';
-const FILES=['./','./index.html','./styles.css?v=map20261119','./script.js?v=map20261119','./trip-places.js?v=map20261119','./trip-map.js?v=map20261119','./manifest.webmanifest','./icon.svg','./assets/fukuoka-hero.webp','./assets/ohori-fukuoka-castle.webp','./assets/itoshima.webp','./assets/mojiko-sarakura.webp','./assets/dazaifu.webp'];
+const CACHE='fukuoka-transport-20261119-v1';
+const FILES=['./','./index.html','./styles.css?v=transport20261119','./script.js?v=transport20261119','./trip-places.js?v=transport20261119','./trip-map.js?v=transport20261119','./trip-transport.js?v=transport20261119','./manifest.webmanifest','./icon.svg','./assets/fukuoka-hero.webp','./assets/ohori-fukuoka-castle.webp','./assets/itoshima.webp','./assets/mojiko-sarakura.webp','./assets/dazaifu.webp'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('fukuoka-')&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',event=>{
