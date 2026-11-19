@@ -1,5 +1,22 @@
 const cards = document.querySelectorAll('.day-card');
 
+function updateBudget() {
+ const people=Math.max(1,Math.min(20,Number(document.getElementById('budgetPeople').value)||1));
+ const car=62000/people;
+ const fmt=(amount)=>Math.ceil(amount).toLocaleString('en-US');
+ for(const [id,value] of [['car',car],['twin',33200+34000+car],['single',51600+34000+car]]){
+  document.getElementById(id+'Yen').textContent='¥'+fmt(value)+(id==='car'?'':'–'+fmt(value+16000));
+  document.getElementById(id+'Hkd').textContent='HK$'+fmt(value*.05)+(id==='car'?'':'–'+fmt((value+16000)*.05));
+ }
+}
+document.getElementById('budgetPeople').addEventListener('input',updateBudget);
+updateBudget();
+if('serviceWorker' in navigator){
+ navigator.serviceWorker.register('./sw.js').then(()=>navigator.serviceWorker.ready).then(()=>{
+  document.getElementById('offlineStatus').textContent='已儲存離線手帖：行程、預算、緊急資料及插畫可離線查看。';
+ }).catch(()=>{document.getElementById('offlineStatus').textContent='未能儲存離線手帖，請保持連線並稍後重新開啟。';});
+}
+
 function setDayOpen(card, opening) {
   const button = card.querySelector('.day-summary');
   const detail = card.querySelector('.day-detail');
