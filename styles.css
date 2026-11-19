@@ -303,3 +303,26 @@ footer p { margin: 0; }
   body { background: white; }
 }
 
+[hidden] { display: none !important; }
+.day-controls, .food-filters { display: flex; gap: .5rem; flex-wrap: wrap; margin: 1rem 0; }
+.day-controls button, .food-filters button, .today-button { min-height: 44px; padding: .5rem .8rem; background: var(--paper); color: var(--ink); border: 1px solid var(--line); cursor: pointer; }
+.food-filters [aria-pressed="true"] { border-color: var(--vermilion); color: var(--vermilion); }
+.day-overview { grid-column: 1 / -1; font-size: .8rem; }
+.stay-status, .selection-record { padding: 1.2rem; border: 1px solid var(--line); margin: 1rem 0; }
+summary { min-height: 44px; padding: .75rem; cursor: pointer; }
+.trip-checklist { display: grid; gap: .5rem; }
+.trip-checklist label { display: flex; align-items: center; gap: .7rem; min-height: 44px; }
+.trip-checklist input { width: 22px; height: 22px; }
+.back-top { position: fixed; bottom: 1rem; right: 1rem; z-index: 50; background: var(--paper); color: var(--ink); border: 1px solid var(--line); padding: .8rem; text-decoration: none; }
+.food-actions a, .timeline a, .tax-links a { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; padding: .3rem .5rem; }
+@media (max-width: 760px) {
+  .topbar { position: sticky; top: 0; height: auto; min-height: 62px; display: flex; flex-wrap: wrap; background: var(--paper); box-shadow: 0 2px 8px #0001; }
+  .topbar nav { display: flex; width: 100%; overflow-x: auto; white-space: nowrap; gap: .7rem; }
+  .topbar nav > * { flex-shrink: 0; min-height: 44px; display: inline-flex; align-items: center; }
+  .day-jump { top: 115px; }
+  .day-card, .food-card { scroll-margin-top: 200px; }
+}
+@media (prefers-color-scheme: dark) {
+  :root { --paper: #242824; --paper-light: #303831; --ink: #eee9dd; --muted: #b4bfb5; --line: #566057; --vermilion: #ee927c; }
+  body { background: var(--paper); color: var(--ink); }
+}
