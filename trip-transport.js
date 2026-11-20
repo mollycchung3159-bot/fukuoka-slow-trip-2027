@@ -1,6 +1,8 @@
 // Planning estimates checked 2026-11-19. These are not live or confirmed 2027 departures.
 // Keys refer to the shared place IDs. Ordering is derived from the visible daily timeline.
 window.TRIP_TRANSPORT = {
+ 'hotel>sushiemon':['步行＋地下鐵箱崎線＋步行','約20–30分鐘','18:00左右離開中洲酒店；由中洲川端乘箱崎線往千代縣廳口（貝塚方向），4號出口步行約8分鐘到商場；含一般候車，排隊另計。','transit'],
+ 'sushiemon>hotel':['步行＋地下鐵箱崎線＋步行','約20–30分鐘','用餐後步行回千代縣廳口，乘箱崎線往中洲川端，再回酒店整理行李；當日候位較久便順延。','transit'],
  'ohori>teamlab':['步行＋地下鐵＋步行','約35–50分鐘','湖邊步行至大濠公園站，乘空港線往唐人町，再步行約15–20分鐘到 BOSS E・ZO FUKUOKA 5樓；包含一般候車及館內上樓，13:30左右離開公園。','transit'],
  'teamlab>hotel':['步行＋地下鐵','約35–50分鐘','16:00左右離館，步行至唐人町，乘空港線往中洲川端，再步行回酒店；預留16:45左右到達，休息後才往天神。','transit'],
  'airport>hotel':['接駁巴士＋地下鐵＋步行','約35–55分鐘','國際線乘免費接駁巴士到國內線，轉空港線到中洲川端，再步行約3–5分鐘；不含入境及取行李。','transit'],
