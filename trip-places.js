@@ -19,6 +19,7 @@ function tripDecodePlus(shortCode) {
 }
 const place = (name, type, plusCode, googleQuery = name) => ({ name, type, ...tripDecodePlus(plusCode), googleQuery, googlePlusCode: plusCode });
 window.TRIP_PLACES = {
+  sushiemon: {name:'すしえもん BRANCH博多パピヨンガーデン店',type:'餐廳',lat:33.6022331,lng:130.420795,googleQuery:'すしえもん BRANCH博多パピヨンガーデン店'},
   hotel: { ...place(window.TRIP_HOTEL.name + '（暫定）', '酒店', window.TRIP_HOTEL.plusCode, window.TRIP_HOTEL.googleQuery) },
   airport: { name: '福岡機場國際航廈', type: '交通', lat: 33.584404, lng: 130.4438232, googleQuery: 'Fukuoka Airport International Terminal 739 Aoki' },
   sweets: { name: '國內線 SWEETS HALL', type: '景點', lat: 33.5975372, lng: 130.4476183, googleQuery: '福岡空港 SWEETS HALL' },
