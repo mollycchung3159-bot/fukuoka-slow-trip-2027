@@ -1,5 +1,5 @@
-const CACHE='fukuoka-airport-20261120-v1';
-const FILES=['./','./index.html','./styles.css?v=airport20261120','./script.js?v=airport20261120','./trip-places.js?v=airport20261120','./trip-map.js?v=airport20261120','./trip-transport.js?v=airport20261120','./manifest.webmanifest','./icon.svg','./assets/fukuoka-hero.webp','./assets/ohori-fukuoka-castle.webp','./assets/itoshima.webp','./assets/mojiko-sarakura.webp','./assets/dazaifu.webp'];
+const CACHE='fukuoka-round2-20261120-v1';
+const FILES=['./','./index.html','./styles.css?v=round220261120','./script.js?v=round220261120','./trip-places.js?v=round220261120','./trip-map.js?v=round220261120','./trip-transport.js?v=round220261120','./manifest.webmanifest','./icon.svg','./assets/fukuoka-hero.webp','./assets/ohori-fukuoka-castle.webp','./assets/itoshima.webp','./assets/mojiko-sarakura.webp','./assets/dazaifu.webp'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('fukuoka-')&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',event=>{
@@ -7,4 +7,3 @@ self.addEventListener('fetch',event=>{
  if(event.request.mode==='navigate')event.respondWith(fetch(event.request).catch(()=>caches.match('./index.html')));
  else event.respondWith(caches.match(event.request).then(hit=>hit||fetch(event.request)));
 });
-
