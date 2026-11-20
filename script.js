@@ -38,12 +38,11 @@ cards.forEach((card) => {
   });
 });
 
-document.querySelectorAll('.day-jump a').forEach((link) => {
+document.querySelectorAll('.day-jump [data-day]').forEach((link) => {
   link.addEventListener('click', (event) => {
     event.preventDefault();
-    history.pushState(null, '', link.hash);
-    document.getElementById('mapBlock').scrollIntoView({behavior:'smooth'});
-    const card = document.querySelector(link.getAttribute('href'));
+    history.replaceState(null, '', '#day'+link.dataset.day);
+    const card = document.getElementById('day'+link.dataset.day);
     if (card) setDayOpen(card, true);
   });
 });
@@ -108,4 +107,3 @@ document.getElementById('shareButton').addEventListener('click', shareTrip);
 document.getElementById('shareButtonBottom').addEventListener('click', shareTrip);
 
 new ResizeObserver(entries => { document.documentElement.style.setProperty("--topbar-height", entries[0].target.getBoundingClientRect().height + "px"); }).observe(document.querySelector(".topbar"));
-
