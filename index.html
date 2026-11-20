@@ -5,7 +5,7 @@
   <link rel="manifest" href="manifest.webmanifest"><meta name="robots" content="noindex">
   <meta property="og:title" content="福岡，慢慢行。">
   <meta property="og:description" content="2027年3月15–20日，六日五夜慢遊手帖。">
-  <meta property="og:image" content="https://mollycchung3159-bot.github.io/fukuoka-slow-trip-2027/assets/itoshima.webp">
+  <meta property="og:image" content="https://mollycchung3159-bot.github.io/fukuoka-slow-trip-2027/assets/fukuoka-hero.webp">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f4f0e7">
   <meta name="description" content="福岡六日五夜慢遊行程，2027年3月15至20日。">
@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@400;500;600;700&family=Noto+Serif+HK:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=airport20261120">
+  <link rel="stylesheet" href="styles.css?v=round220261120">
 </head>
 <body>
   <a class="skip-link" href="#itinerary">跳到行程</a>
@@ -81,13 +81,13 @@
       </div>
 
       <div class="trip-map-block" id="mapBlock"><nav class="day-jump" aria-label="快速前往每日行程">
-        <a href="#day1"><span>一</span>3/15</a>
-        <a href="#day2"><span>二</span>3/16</a>
-        <a href="#day3"><span>三</span>3/17</a>
-        <a href="#day4"><span>四</span>3/18</a>
-        <a href="#day5"><span>五</span>3/19</a>
-        <a href="#day6"><span>六</span>3/20</a>
-      </nav><div class="map-header"><h3 id="mapHeading">每日行程地圖</h3><button type="button" id="mapAll" aria-pressed="false">全部</button></div><div id="tripMap" aria-label="每日景點位置地圖"></div><p id="mapStatus" role="status">正在載入地圖；下方地點清單亦可使用。</p><p class="map-legend"><span>● Day 1</span><span>● Day 2</span><span>● Day 3</span><span>● Day 4</span><span>● Day 5</span><span>● Day 6</span></p><section class="map-transport" aria-labelledby="transportTitle"><h3 id="transportTitle">由上一站到下一站</h3><p class="transport-disclaimer">以下為規劃估算，按暫定中洲酒店計算；步行時間按一般慢行速度。車上時間不含候車，其他時間已留一般轉乘緩衝；不含遊覽、用餐及排隊。2027年班次未確認，出發前及當日請再查。</p><div id="mapTransport" aria-live="polite"></div><details><summary>交通參考來源</summary><a href="https://www.fukuoka-airport.jp/access/bus2.html" target="_blank" rel="noopener">機場接駁巴士 ↗</a> · <a href="https://www.crossroadfukuoka.jp/spot/11453" target="_blank" rel="noopener">相島交通 ↗</a> · <a href="https://www.city.yame.fukuoka.jp/soshiki/3/17/1/6/1455882042063.html" target="_blank" rel="noopener">八女交通 ↗</a> · <a href="https://dazaifu.org/access/" target="_blank" rel="noopener">太宰府交通 ↗</a></details></section><details><summary>地點與導航清單</summary><ol id="mapStops"></ol></details><p class="map-note">虛線只示行程順序，並非道路或實際交通路線；區域標記為代表位置，未指定的小店不另作標記。</p></div>
+        <button type="button" data-day="1" aria-pressed="false"><span>一</span>3/15</button>
+        <button type="button" data-day="2" aria-pressed="false"><span>二</span>3/16</button>
+        <button type="button" data-day="3" aria-pressed="false"><span>三</span>3/17</button>
+        <button type="button" data-day="4" aria-pressed="false"><span>四</span>3/18</button>
+        <button type="button" data-day="5" aria-pressed="false"><span>五</span>3/19</button>
+        <button type="button" data-day="6" aria-pressed="false"><span>六</span>3/20</button>
+      <button type="button" id="mapAll" aria-pressed="false">全程</button></nav><div class="map-header"><h3 id="mapHeading">每日行程地圖</h3></div><div id="tripMap" aria-label="每日景點位置地圖"></div><div id="mapStopStrip" class="map-stop-strip" aria-label="當日站點"></div><p id="mapStatus" role="status">正在載入地圖；下方地點清單亦可使用。</p><p class="map-legend"><span>● Day 1</span><span>● Day 2</span><span>● Day 3</span><span>● Day 4</span><span>● Day 5</span><span>● Day 6</span></p><section class="map-transport" aria-labelledby="transportTitle"><h3 id="transportTitle">由上一站到下一站</h3><p class="transport-disclaimer">交通為規劃估算，不含遊覽及排隊；2027年班次請出發前再查。</p><div id="mapTransport" aria-live="polite"></div><details><summary>交通參考來源</summary><a href="https://www.fukuoka-airport.jp/access/bus2.html" target="_blank" rel="noopener">機場接駁巴士 ↗</a> · <a href="https://www.crossroadfukuoka.jp/spot/11453" target="_blank" rel="noopener">相島交通 ↗</a> · <a href="https://www.city.yame.fukuoka.jp/soshiki/3/17/1/6/1455882042063.html" target="_blank" rel="noopener">八女交通 ↗</a> · <a href="https://dazaifu.org/access/" target="_blank" rel="noopener">太宰府交通 ↗</a></details></section><details><summary>地點與導航清單</summary><ol id="mapStops"></ol></details></div>
       
 
       <div class="day-controls"><button id="expandAll">全部展開</button><button id="collapseAll">全部收起</button><span id="todayStatus" role="status"></span></div><div class="days">
@@ -297,10 +297,9 @@
     <p>福岡六日五夜 · 2027年3月15–20日</p>
     <p>行程時間可按天氣、交通及當日體力調整。</p>
   </footer>
-  <script src="trip-places.js?v=airport20261120"></script>
-  <script src="trip-transport.js?v=airport20261120"></script>
-  <script src="trip-map.js?v=airport20261120"></script>
-  <script src="script.js?v=airport20261120"></script>
+  <script src="trip-places.js?v=round220261120"></script>
+  <script src="trip-transport.js?v=round220261120"></script>
+  <script src="trip-map.js?v=round220261120"></script>
+  <script src="script.js?v=round220261120"></script>
 </body>
 </html>
-
