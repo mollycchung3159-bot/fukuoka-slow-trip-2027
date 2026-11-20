@@ -360,6 +360,15 @@ a { min-height:44px; min-width:44px; display:inline-flex; align-items:center; }
 .day-jump a[aria-current="date"] { color:var(--vermilion); background:var(--paper-light); }
 .trip-map-block .day-jump { margin:0 0 .8rem; width:100%; }
 .trip-map-block .day-jump a { display:flex; flex-direction:column; justify-content:center; align-items:center; gap:.15rem; }
+.booking-guide { width:88%; max-width:1200px; margin:5rem auto; scroll-margin-top:calc(var(--topbar-height,115px) + 20px); }
+.booking-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; margin:2rem 0; }
+.booking-card,.booking-other { border:1px solid var(--line); padding:1.25rem; overflow-wrap:anywhere; }
+.booking-card { scroll-margin-top:calc(var(--topbar-height,115px) + 20px); }
+.booking-card h3 { font-size:1.35rem; }.booking-visit { color:var(--vermilion); font-weight:600; }
+.booking-card dt { margin-top:1rem; font-weight:600; }.booking-card dd { margin:.4rem 0; font-size:.85rem; line-height:1.9; }
+.booking-secondary .booking-other { margin:.7rem 0; }.booking-other p,.booking-source-note { font-size:.85rem; }
+#bookingChecklist { scroll-margin-top:calc(var(--topbar-height,115px) + 20px); }
+@media(max-width:900px) { .booking-grid { grid-template-columns:1fr; } .booking-guide { width:90%; } }
 @media print { .trip-map-block { display:none; } }
 @media (prefers-color-scheme: dark) {
   :root { --paper: #242824; --paper-light: #303831; --ink: #eee9dd; --muted: #b4bfb5; --line: #566057; --vermilion: #ee927c; }
