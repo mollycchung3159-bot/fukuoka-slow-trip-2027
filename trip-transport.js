@@ -23,11 +23,11 @@ window.TRIP_TRANSPORT = {
  'shingu>fukkodai':['マリンクス巴士','車上約10–15分鐘','回程相らんど線第2路線，目標16:28開出；另留候車及轉JR時間。','transit'],
  'fukkodai>hakata':['JR鹿兒島本線','車上約17–25分鐘','加候車及轉乘後，預留約17:15–17:45抵博多；依當日班次。','transit'],
  'hakata>tateru':['步行','約15–20分鐘','往住吉1-6-8；抵博多後先休息，18:30才吃晚餐，排隊另計。','walking'],
- 'hotel>fukushima':['地下鐵＋JR＋堀川巴士＋步行','約100–130分鐘','中洲川端→博多；JR至羽犬塚約50–65分鐘，再乘堀川巴士約20分鐘至福島一帶，步行約5–10分鐘；含轉乘緩衝。10:00出門較合理約11:40–12:10到達，原11:15屬偏緊目標。','transit'],
+ 'hotel>fukushima':['地下鐵＋JR＋堀川巴士＋步行','約120–150分鐘','10:00由中洲酒店出發，經博多及羽犬塚，預計12:00–12:30到神社。JR約50–65分鐘、巴士約20–30分鐘，福島站牌至神社按官方留約20分鐘步行；含一般候車、轉乘。','transit'],
  'fukushima>katsukiya':['步行','約1–3分鐘','餐廳就在福島八幡宮境內，毋須乘車。','walking'],
  'katsukiya>yame':['步行','約3–10分鐘','走往白壁老街；在老街內慢逛及額外工藝館時間另計。','walking'],
- 'yame>hotel':['步行＋堀川巴士＋JR＋地下鐵','約100–130分鐘','步行至福島一帶站牌→羽犬塚→博多→中洲川端；巴士約20分鐘、JR約50–65分鐘，含一般轉乘。16:15出發約17:55–18:25到酒店，休息時間較短。','transit'],
- 'hotel>agito':['步行＋西鐵＋步行','約30–45分鐘','步行至西鐵福岡（天神），乘普通列車至西鐵平尾，出站再步行約3分鐘。19:00訂位建議18:15–18:30離開酒店。','transit'],
+ 'yame>hotel':['步行＋堀川巴士＋JR＋地下鐵','約140–170分鐘','13:55結束遊覽，步行約20分鐘，14:15前到福島站牌；現行平日羽矢線參考14:25→14:46羽犬塚，再轉JR及地下鐵，目標16:15–16:45回酒店，至18:00至少休息75分鐘。2027班次未確認；最遲17:00回酒店作規劃底線。','transit'],
+ 'hotel>agito':['步行＋西鐵＋步行','約30–45分鐘','18:00離開酒店，步行到西鐵福岡（天神），乘普通列車至西鐵平尾，再步行約3分鐘。目標18:30–18:45到店，19:00前留至少15分鐘緩衝；尚未預約。','transit'],
  'tenjin>dazaifuStation':['西鐵電車／二日市轉車','約30–45分鐘','天神大牟田線→西鐵二日市→太宰府線；含一般候車及轉車，酒店出發全程仍留60–75分鐘。','transit'],
  'dazaifuStation>loop':['步行','約2–5分鐘','往宰府2-7-5，先買明太子法包。','walking'],
  'loop>tenmangu':['步行','約8–12分鐘','沿參道前往天滿宮；小店、食小食及參拜時間另計。','walking'],
@@ -38,7 +38,7 @@ window.TRIP_TRANSPORT = {
 };
 window.tripTransportLegs = day => {
  const stops=window.tripMapStops().filter(s=>s.day===day).filter((s,i,all)=>i===0||s.id!==all[i-1].id);
- if([2,4,5].includes(day)) stops.unshift({...window.TRIP_PLACES.hotel,id:'hotel',day,time:'酒店出發'});
+ if([2,4,5].includes(day)&&stops[0]?.id!=='hotel') stops.unshift({...window.TRIP_PLACES.hotel,id:'hotel',day,time:'酒店出發'});
  return stops.slice(1).map((to,i)=>{
   const from=stops[i], key=from.id+'>'+to.id, info=window.TRIP_TRANSPORT[key];
   if(!info) throw new Error('Missing transport estimate: '+key);
