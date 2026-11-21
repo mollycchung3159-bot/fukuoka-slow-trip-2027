@@ -55,6 +55,5 @@ document.querySelectorAll('[data-hotel-map]').forEach(el => { el.href = window.t
 // Timeline time, day and stop order are read from the same visible itinerary, never duplicated.
 window.tripMapStops = () => [...document.querySelectorAll('.day-card .timeline li[data-stops]')].flatMap(li => li.dataset.stops.split(' ').filter(Boolean).map(id => ({
   ...window.TRIP_PLACES[id], id,
-  day: Number(li.closest('.day-card').id.slice(3)), time: li.querySelector('time').textContent.trim()
+  day: Number(li.closest('.day-card').id.slice(3)), time: li.querySelector('time').textContent.trim(), label: li.querySelector('strong')?.textContent.trim()
 })));
-

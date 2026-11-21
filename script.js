@@ -30,29 +30,41 @@ function setDayOpen(card, opening, followMap = true) {
   if (opening && followMap) window.dispatchEvent(new CustomEvent("trip:day", {detail:{day:Number(card.id.slice(3))}}));
 }
 
+window.tripSelectDay = (day, writeUrl = true) => {
+  if (day !== 'all') cards.forEach(card => setDayOpen(card, card.id === 'day'+day, false));
+  if (writeUrl) {
+    const url = new URL(location.href); url.searchParams.set('day', String(day));
+    if (/^#(?:day[1-6]|itinerary)$/.test(url.hash)) url.hash='';
+    history.replaceState(null, '', url);
+  }
+  window.dispatchEvent(new CustomEvent('trip:day', {detail:{day}}));
+};
+
 cards.forEach((card) => {
   const button = card.querySelector('.day-summary');
 
   button.addEventListener('click', () => {
-    setDayOpen(card, !card.classList.contains('open'));
+    if (card.classList.contains('open')) setDayOpen(card, false, false);
+    else window.tripSelectDay(Number(card.id.slice(3)));
   });
 });
 
 document.querySelectorAll('.day-jump [data-day]').forEach((link) => {
   link.addEventListener('click', (event) => {
     event.preventDefault();
-    history.replaceState(null, '', '#day'+link.dataset.day);
-    const card = document.getElementById('day'+link.dataset.day);
-    if (card) setDayOpen(card, true);
+    window.tripSelectDay(Number(link.dataset.day));
   });
 });
 
 function openLinkedDay() {
   const card = [...cards].find((day) => `#${day.id}` === window.location.hash);
-  if (card) setDayOpen(card, true);
+  if (card) window.tripSelectDay(Number(card.id.slice(3)), false);
 }
 
-openLinkedDay();
+const requestedDay = new URLSearchParams(location.search).get('day');
+cards.forEach(card => setDayOpen(card, card.id === 'day1', false));
+if (requestedDay === 'all' || /^[1-6]$/.test(requestedDay || '')) window.tripSelectDay(requestedDay === 'all' ? 'all' : Number(requestedDay), false);
+else openLinkedDay();
 window.addEventListener('hashchange', openLinkedDay);
 
 document.getElementById('expandAll').addEventListener('click', () => cards.forEach(card => setDayOpen(card, true, false)));
@@ -61,11 +73,11 @@ function goToday(automatic = false) {
   const date = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Tokyo', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
   const match = /^2027-03-(1[5-9]|20)$/.exec(date);
   const card = match && document.getElementById(`day${Number(match[1]) - 14}`);
-  if (card) { setDayOpen(card, true); card.scrollIntoView(); }
+  if (card) { window.tripSelectDay(Number(card.id.slice(3)), !automatic); if (!automatic) card.scrollIntoView(); }
   else if (!automatic) document.getElementById('todayStatus').textContent = '今日行程適用於2027年3月15–20日。';
 }
 document.querySelector('.today-button').addEventListener('click', () => goToday());
-if (!window.location.hash) goToday(true);
+if (!window.location.hash && !requestedDay) goToday(true);
 document.querySelectorAll('[data-food-filter]').forEach(button => button.addEventListener('click', () => {
   const filter = button.dataset.foodFilter;
   let visible = 0;
@@ -73,7 +85,17 @@ document.querySelectorAll('[data-food-filter]').forEach(button => button.addEven
   document.querySelectorAll('[data-food-filter]').forEach(chip => chip.setAttribute('aria-pressed', String(chip === button)));
   document.getElementById('foodEmpty').hidden = visible > 0;
 }));
-document.querySelectorAll('a[href^="#food-"]').forEach(link => link.addEventListener('click', () => document.querySelector('[data-food-filter="all"]').click()));
+function revealTarget(hash) {
+  if (!hash || hash === '#') return;
+  const target=document.getElementById(decodeURIComponent(hash.slice(1)));
+  if (!target) return;
+  let details=target.closest('details');
+  while(details){ details.open=true; details=details.parentElement.closest('details'); }
+  if(target.matches('[data-food-day]')) document.querySelector('[data-food-filter="all"]').click();
+}
+document.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener('click', () => revealTarget(link.hash)));
+window.addEventListener('hashchange', () => revealTarget(location.hash));
+revealTarget(location.hash);
 document.querySelectorAll('[data-trip-check]').forEach(input => {
   const key = `fukuoka-check-${input.dataset.tripCheck}`;
   try { input.checked = localStorage.getItem(key) === 'true'; } catch {}
@@ -107,3 +129,9 @@ document.getElementById('shareButton').addEventListener('click', shareTrip);
 document.getElementById('shareButtonBottom').addEventListener('click', shareTrip);
 
 new ResizeObserver(entries => { document.documentElement.style.setProperty("--topbar-height", entries[0].target.getBoundingClientRect().height + "px"); }).observe(document.querySelector(".topbar"));
+
+const backTop=document.querySelector('.back-top'), nearMap=new Set();
+function updateBackTop(){backTop.hidden=scrollY<600||nearMap.size>0;}
+const mapVisibility=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting)nearMap.add(entry.target);else nearMap.delete(entry.target);});updateBackTop();},{rootMargin:'64px 0px 64px 0px'});
+document.querySelectorAll('.map-frame,#mapStopStrip').forEach(el=>mapVisibility.observe(el));
+window.addEventListener('scroll',updateBackTop,{passive:true});updateBackTop();
