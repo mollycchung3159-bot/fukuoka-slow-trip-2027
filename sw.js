@@ -1,5 +1,5 @@
-const CACHE='fukuoka-round3-20261121-v1';
-const FILES=['./','./index.html','./styles.css?v=round320261121','./script.js?v=round320261121','./trip-places.js?v=round320261121','./trip-map.js?v=round320261121','./trip-transport.js?v=round220261120','./manifest.webmanifest','./icon.svg','./assets/fukuoka-hero.webp','./assets/ohori-fukuoka-castle.webp','./assets/itoshima.webp','./assets/mojiko-sarakura.webp','./assets/dazaifu.webp','./assets/yame-old-town.webp','./assets/ainoshima-cats-harbor.webp'];
+const CACHE='fukuoka-round4-20261121-v1';
+const FILES=['./','./index.html','./styles.css?v=round420261121','./script.js?v=round320261121','./trip-places.js?v=round320261121','./trip-map.js?v=round420261121','./trip-transport.js?v=round220261120','./manifest.webmanifest','./icon.svg','./assets/fukuoka-hero.webp','./assets/ohori-fukuoka-castle.webp','./assets/itoshima.webp','./assets/mojiko-sarakura.webp','./assets/dazaifu.webp','./assets/yame-old-town.webp','./assets/ainoshima-cats-harbor.webp'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('fukuoka-')&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',event=>{
