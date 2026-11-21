@@ -452,8 +452,8 @@ a { min-height:44px; min-width:44px; display:inline-flex; align-items:center; }
 .map-context .map-return { border-style:dashed; font-weight:600; }
 .hotel-pin { background:#fbf8f1; border-color:#536d62; color:#24332f; font-size:17px; }
 .trip-day-marker { background:none; border:none; }
-.map-day-badge { width:96px; height:50px; background:var(--pin-color); color:#fff; border:2px solid #fff; border-radius:10px; box-shadow:0 2px 6px #0004; display:flex; flex-direction:column; align-items:center; justify-content:center; line-height:1.4; }
-.map-day-badge b { font-size:14px; }.map-day-badge span { font-size:11px; }
+.map-day-badge { width:var(--badge-width,84px); height:44px; background:var(--pin-color); color:#fff; border:2px solid #fff; border-radius:9px; box-shadow:0 2px 6px #0004; display:flex; gap:5px; align-items:center; justify-content:center; line-height:1.4; }
+.map-day-badge b { font-size:14px; }.map-day-badge span { font-size:12px; }
 .map-visit-list { margin:.6rem 0; padding:0; list-style:none; }
 .map-visit-list li { padding:.25rem 0; border-bottom:1px solid #cfc8ba; }
 #tripMap .leaflet-popup-content > div > strong { display:block; padding-right:24px; }

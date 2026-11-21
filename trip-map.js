@@ -49,15 +49,23 @@
     if(selected==='all'){
       const representativeIds=['nakasu','ohori','ainoshima','fukushima','tenmangu','airport'];
       const centers=representativeIds.map((id,i)=>({day:i+1,id,point:L.latLng(window.TRIP_PLACES[id].lat,window.TRIP_PLACES[id].lng)}));if(fit)map.fitBounds(L.latLngBounds(centers.map(s=>s.point)),{padding:[58,65],maxZoom:12,animate:false});const boxes=[];
-      for(const {day,id,point} of centers){const p=map.latLngToContainerPoint(point),candidates=[];for(let y=4;y<=map.getSize().y-56;y+=56)for(let x=4;x<=map.getSize().x-100;x+=100)candidates.push({x,y});candidates.sort((a,b)=>Math.hypot(a.x+48-p.x,a.y+24-p.y)-Math.hypot(b.x+48-p.x,b.y+24-p.y));
-        const free=a=>!boxes.some(b=>Math.abs(a.x-b.x)<98&&Math.abs(a.y-b.y)<54);
-        const avoidsOrigins=a=>centers.every(c=>{const q=map.latLngToContainerPoint(c.point);return q.x<a.x-8||q.x>a.x+104||q.y<a.y-8||q.y>a.y+58;});
-        const pos=candidates.find(a=>free(a)&&avoidsOrigins(a))||candidates.find(free)||candidates[0];boxes.push(pos);
-        const labelCenter=map.containerPointToLatLng([pos.x+48,pos.y+25]);
-        L.polyline([point,labelCenter],{color:colors[day-1],weight:1.5,opacity:.85,interactive:false,className:'overview-connector'}).addTo(layer);
-        L.circleMarker(point,{radius:3,color:'#fff',weight:1,fillColor:colors[day-1],fillOpacity:1,interactive:false,className:'overview-origin'}).addTo(layer);
-        overviewAnchors.push({day,id,lat:point.lat,lng:point.lng});
-        const card=document.createElement('div');card.className='map-day-badge';card.style.setProperty('--pin-color',colors[day-1]);const b=document.createElement('b'),small=document.createElement('span');b.textContent=`Day ${day}`;small.textContent=shortLabels[day-1];card.append(b,small);const marker=L.marker(point,{icon:L.divIcon({className:'trip-day-marker',html:card.outerHTML,iconSize:[96,50],iconAnchor:[p.x-pos.x,p.y-pos.y]}),title:`Day ${day} · ${shortLabels[day-1]}`}).addTo(layer);marker.on('click',()=>select(day));summaryMarkers.push(marker);
+      const names=['中洲','市內','相島','八女','太宰府','機場'],preferred=[[0,38],[-64,0],[8,-34],[0,34],[48,30],[64,-2]];
+      // Nearby candidate positions follow each real point; there is no screen-wide grid.
+      const ordered=[3,4,2,6,1,5].map(day=>centers.find(c=>c.day===day));
+      for(const {day,id,point} of ordered){
+        const p=map.latLngToContainerPoint(point),w=[1,2,6].includes(day)?70:84,h=44,[dx,dy]=preferred[day-1],offsets=[[dx,dy]];
+        for(const radius of [34,50,66,82,98])for(let angle=0;angle<Math.PI*2;angle+=Math.PI/8)offsets.push([Math.cos(angle)*radius,Math.sin(angle)*radius]);
+        const candidates=offsets.map(([x,y])=>({x:Math.max(6,Math.min(map.getSize().x-w-6,p.x+x-w/2)),y:Math.max(6,Math.min(map.getSize().y-h-6,p.y+y-h/2)),w,h}));
+        const distance=a=>Math.hypot(a.x+w/2-p.x,a.y+h/2-p.y);
+        candidates.sort((a,b)=>(Math.hypot(a.x+w/2-p.x-dx,a.y+h/2-p.y-dy)+distance(a)*.25)-(Math.hypot(b.x+w/2-p.x-dx,b.y+h/2-p.y-dy)+distance(b)*.25));
+        const free=a=>!boxes.some(b=>a.x<b.x+b.w+4&&a.x+a.w+4>b.x&&a.y<b.y+b.h+4&&a.y+a.h+4>b.y);
+        const avoidsOrigins=a=>centers.every(c=>{const q=map.latLngToContainerPoint(c.point);return q.x<a.x-6||q.x>a.x+a.w+6||q.y<a.y-6||q.y>a.y+a.h+6;});
+        const pos=candidates.find(a=>distance(a)<=104&&free(a)&&avoidsOrigins(a))||candidates.find(a=>distance(a)<=104&&free(a))||candidates[0];boxes.push(pos);
+        const endpoint=map.containerPointToLatLng([Math.max(pos.x,Math.min(pos.x+w,p.x)),Math.max(pos.y,Math.min(pos.y+h,p.y))]);
+        L.polyline([point,endpoint],{color:colors[day-1],weight:2.5,opacity:1,interactive:false,className:'overview-connector'}).addTo(layer);
+        L.circleMarker(point,{radius:4,color:'#fff',weight:1.5,fillColor:colors[day-1],fillOpacity:1,interactive:false,className:'overview-origin'}).addTo(layer);
+        overviewAnchors.push({day,id,lat:point.lat,lng:point.lng,labelDistance:distance(pos)});
+        const card=document.createElement('div');card.className='map-day-badge';card.style.setProperty('--pin-color',colors[day-1]);card.style.setProperty('--badge-width',w+'px');const b=document.createElement('b'),small=document.createElement('span');b.textContent=day;small.textContent=names[day-1];card.append(b,small);const marker=L.marker(point,{icon:L.divIcon({className:'trip-day-marker',html:card.outerHTML,iconSize:[w,h],iconAnchor:[p.x-pos.x,p.y-pos.y]}),title:`Day ${day} · ${shortLabels[day-1]}`}).addTo(layer);marker.on('click',()=>select(day));summaryMarkers.push(marker);
       }
     }else{
       const focus=core(selected);if(fit)map.fitBounds(L.latLngBounds(focus.map(s=>[s.lat,s.lng])),{padding:[42,44],maxZoom:selected===5?15:new Set(focus.map(s=>s.id)).size===1?16:18,animate:false});const groups=new Map();numbered.forEach(v=>{if(!groups.has(v.id))groups.set(v.id,[]);groups.get(v.id).push(v);});
