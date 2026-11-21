@@ -55,7 +55,8 @@
       for(const {day,id,point} of ordered){
         const p=map.latLngToContainerPoint(point),w=[1,2,6].includes(day)?70:84,h=44,[dx,dy]=preferred[day-1],offsets=[[dx,dy]];
         for(const radius of [34,50,66,82,98])for(let angle=0;angle<Math.PI*2;angle+=Math.PI/8)offsets.push([Math.cos(angle)*radius,Math.sin(angle)*radius]);
-        const candidates=offsets.map(([x,y])=>({x:Math.max(6,Math.min(map.getSize().x-w-6,p.x+x-w/2)),y:Math.max(6,Math.min(map.getSize().y-h-6,p.y+y-h/2)),w,h}));
+        const inView=p.x>=0&&p.x<=map.getSize().x&&p.y>=0&&p.y<=map.getSize().y;
+        const candidates=offsets.map(([x,y])=>({x:inView?Math.max(6,Math.min(map.getSize().x-w-6,p.x+x-w/2)):p.x+x-w/2,y:inView?Math.max(6,Math.min(map.getSize().y-h-6,p.y+y-h/2)):p.y+y-h/2,w,h}));
         const distance=a=>Math.hypot(a.x+w/2-p.x,a.y+h/2-p.y);
         candidates.sort((a,b)=>(Math.hypot(a.x+w/2-p.x-dx,a.y+h/2-p.y-dy)+distance(a)*.25)-(Math.hypot(b.x+w/2-p.x-dx,b.y+h/2-p.y-dy)+distance(b)*.25));
         const free=a=>!boxes.some(b=>a.x<b.x+b.w+4&&a.x+a.w+4>b.x&&a.y<b.y+b.h+4&&a.y+a.h+4>b.y);
