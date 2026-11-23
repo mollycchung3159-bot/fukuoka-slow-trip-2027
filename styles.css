@@ -174,6 +174,33 @@ h1 { font-family: var(--serif); font-size: clamp(3.7rem, 9vw, 7.8rem); line-heig
 .timeline div::before { content: ""; position: absolute; left: -.25rem; top: .58rem; width: .45rem; height: .45rem; border: 1px solid var(--moss); background: var(--paper); transform: rotate(45deg); }
 .timeline strong { font-size: 1rem; }
 .timeline p { color: var(--muted); margin: .15rem 0 0; }
+/* A compact stop row; fallback text stays available in native offline details. */
+.timeline > li { display:block; padding:0; border-bottom:1px solid var(--line); }
+.timeline > li::after { display:none; }
+.timeline-step > summary { display:grid; grid-template-columns:6rem minmax(0,1fr) 1rem; align-items:center; gap:.7rem; min-height:68px; padding:.65rem 0; cursor:pointer; list-style:none; }
+.timeline-step > summary::-webkit-details-marker { display:none; }
+.timeline-step .step-label { display:grid; gap:.2rem; min-width:0; }
+.timeline-step .step-label strong { font-size:.95rem; line-height:1.45; }
+.timeline-step .step-label small { font-size:.76rem; line-height:1.5; color:var(--muted); }
+.timeline-step .step-toggle { color:var(--moss); text-align:center; transition:transform .15s; }
+.timeline-step[open] > summary .step-toggle { transform:rotate(45deg); }
+.timeline .step-copy { padding:.6rem .8rem 1rem; background:var(--paper-light); font-size:.88rem; }
+.timeline .step-copy::before { display:none; }
+.timeline .step-copy p + p { margin-top:.7rem; }
+.timeline-step > summary:focus-visible { outline:2px solid var(--ink); outline-offset:3px; }
+.cost-details { grid-column:1/-1; }
+.cost-details > summary,.day-reference > summary { cursor:pointer; min-height:44px; padding:.6rem 0; }
+.cost-details small { display:block; }
+.day-reference { margin:.8rem 0; border-bottom:1px solid var(--line); color:var(--ink); }
+.day-reference p { font-size:.87rem; color:var(--muted); }
+.day-reference .soft-note { margin:0 0 1rem; }
+.booking-priority { padding-left:1.3rem; margin:.6rem 0; }
+.booking-priority li { margin:.4rem 0; }
+@media(max-width:600px) {
+  .day-detail { padding-left:0; }
+  .timeline-step > summary { grid-template-columns:5.8rem minmax(0,1fr) .85rem; gap:.5rem; }
+  .timeline-step time { font-size:.85rem; }
+}
 .soft-note { margin: .5rem 0 0 6.25rem; padding: 1rem 1.2rem; background: #e6ebe5; border-left: 3px solid var(--moss); color: #45534d; font-size: .9rem; }
 .soft-note.rain { background: #e6ecee; border-color: var(--blue); }
 .cost-box {
@@ -394,6 +421,7 @@ a { min-height:44px; min-width:44px; display:inline-flex; align-items:center; }
 .booking-guide { width:88%; max-width:1200px; margin:5rem auto; scroll-margin-top:calc(var(--topbar-height,115px) + 20px); }
 .booking-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; margin:2rem 0; }
 .booking-card,.booking-other { border:1px solid var(--line); padding:1.25rem; overflow-wrap:anywhere; }
+@media(max-width:600px) { .day-card .day-detail { padding-left:0; } }
 .booking-card { scroll-margin-top:calc(var(--topbar-height,115px) + 20px); }
 .booking-card h3 { font-size:1.35rem; }.booking-visit { color:var(--vermilion); font-weight:600; }
 .booking-card dt { margin-top:1rem; font-weight:600; }.booking-card dd { margin:.4rem 0; font-size:.85rem; line-height:1.9; }

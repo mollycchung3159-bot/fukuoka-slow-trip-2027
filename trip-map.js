@@ -1,7 +1,7 @@
 (() => {
   const panel=document.getElementById('tripMap'),status=document.getElementById('mapStatus'),heading=document.getElementById('mapHeading'),list=document.getElementById('mapStops'),strip=document.getElementById('mapStopStrip'),transport=document.getElementById('mapTransport'),context=document.getElementById('mapContext');
   const colors=['#a44832','#426b59','#2c668e','#825c91','#8b5e19','#555f69'];
-  const labels=['入住／運河城／早晚餐','白金／大濠／teamLab／天神','相島＋酒店休息／住吉晚餐','八女＋平尾晚餐','太宰府＋博多甜點／千代晚餐','酒店→國內線→國際線'],shortLabels=['博多／中洲','福岡市內','相島','八女','太宰府','機場'];
+  const labels=['入住／運河城／早晚餐','白金／大濠／teamLab／天神','相島＋酒店休息／住吉晚餐','八女＋平尾晚餐','太宰府＋博多甜點／千代晚餐','酒店→國際線（國內線只轉車）'],shortLabels=['博多／中洲','福岡市內','相島','八女','太宰府','機場'];
   const focusIds=[['hotel','canal','nakasu'],['shirogane','ohori','teamlab','tenjin'],['ainoshima'],['fukushima','katsukiya','yame'],['loop','tenmangu'],['sweets','airport']];
   const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
   let selected=1,map,layer,loading=false,rendering=false,numbered=[],markers=[],summaryMarkers=[],focusedStop=null,overviewAnchors=[];
