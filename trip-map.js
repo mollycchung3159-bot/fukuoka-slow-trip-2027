@@ -1,7 +1,7 @@
 (() => {
   const panel=document.getElementById('tripMap'),status=document.getElementById('mapStatus'),heading=document.getElementById('mapHeading'),list=document.getElementById('mapStops'),strip=document.getElementById('mapStopStrip'),transport=document.getElementById('mapTransport'),context=document.getElementById('mapContext');
   const colors=['#a44832','#426b59','#2c668e','#825c91','#8b5e19','#555f69'];
-  const labels=['博多／中洲','白金／大濠／teamLab／天神','相島＋住吉晚餐','八女＋平尾晚餐','太宰府＋千代壽司晚餐','酒店→國內線→國際線'],shortLabels=['博多／中洲','福岡市內','相島','八女','太宰府','機場'];
+  const labels=['博多／中洲','白金／大濠／teamLab／天神','相島＋博多冰淇淋／住吉晚餐','八女＋平尾晚餐','太宰府＋千代壽司晚餐','酒店→國內線→國際線'],shortLabels=['博多／中洲','福岡市內','相島','八女','太宰府','機場'];
   const focusIds=[['hotel','kushida','kawabata','canal','nakasu'],['shirogane','ohori','teamlab','tenjin'],['ainoshima'],['fukushima','katsukiya','yame'],['loop','tenmangu'],['sweets','airport']];
   const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
   let selected=1,map,layer,loading=false,rendering=false,numbered=[],markers=[],summaryMarkers=[],focusedStop=null,overviewAnchors=[];
@@ -24,7 +24,7 @@
     markers.forEach(m=>{if(!focusIds[selected-1].includes(m.group[0].id))layer.removeLayer(m.marker);});
     entry.marker.addTo(layer);focusedStop=item.id;map.setView(entry.marker.getLatLng(),16,{animate:false});entry.marker.openPopup();activate(entry.group);drawContext();
   }
-  const contextNames={hotel:'🏨 酒店',airport:'✈ 機場',hakata:'🚉 博多站',tenjin:'🚉 天神站',fukkodai:'🚉 福工大前',shingu:'⛴ 新宮港',tateru:'🍜 晚餐 · 住吉',agito:'🥩 晚餐 · 平尾',sushiemon:'🍣 晚餐 · 千代／博多',dazaifuStation:'🚉 太宰府站'};
+  const contextNames={imonne:'🍨 Imonne · 博多',hotel:'🏨 酒店',airport:'✈ 機場',hakata:'🚉 博多站',tenjin:'🚉 天神站',fukkodai:'🚉 福工大前',shingu:'⛴ 新宮港',tateru:'🍜 晚餐 · 住吉',agito:'🥩 晚餐 · 平尾',sushiemon:'🍣 晚餐 · 千代／博多',dazaifuStation:'🚉 太宰府站'};
   function drawContext(){
     context.replaceChildren();context.hidden=selected==='all';if(selected==='all')return;
     context.setAttribute('aria-label','當日其他站點方向與返回範圍');

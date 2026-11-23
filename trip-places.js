@@ -19,6 +19,8 @@ function tripDecodePlus(shortCode) {
 }
 const place = (name, type, plusCode, googleQuery = name) => ({ name, type, ...tripDecodePlus(plusCode), googleQuery, googlePlusCode: plusCode });
 window.TRIP_PLACES = {
+  // Marui official access coordinate master, checked 2026-11-23: building representative pin, shop on 1F.
+  imonne: {name:'Imonne／いもんね 博多店（博多マルイ1F）',type:'餐廳',lat:33.588845,lng:130.419218,googleQuery:'いもんね 博多店 博多マルイ'},
   sushiemon: {name:'すしえもん BRANCH博多パピヨンガーデン店',type:'餐廳',lat:33.6022331,lng:130.420795,googleQuery:'すしえもん BRANCH博多パピヨンガーデン店'},
   hotel: { ...place(window.TRIP_HOTEL.name + '（暫定）', '酒店', window.TRIP_HOTEL.plusCode, window.TRIP_HOTEL.googleQuery) },
   airport: { name: '福岡機場國際航廈', type: '交通', lat: 33.584404, lng: 130.4438232, googleQuery: 'Fukuoka Airport International Terminal 739 Aoki' },
