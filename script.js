@@ -5,7 +5,7 @@ function updateBudget() {
  const entered=field.value.trim()!=='';
  const flight=Math.max(0,Number(field.value)||0);
  const fmt=value=>Math.ceil(value).toLocaleString('en-US');
- for(const [id,low,high] of [['twin',3520,4430],['single',4440,5350]]){
+ for(const [id,low,high] of [['twin',3530,4450],['single',4450,5370]]){
   document.getElementById(id+'Yen').textContent='¥'+fmt((low+flight)*20)+'–'+fmt((high+flight)*20);
   document.getElementById(id+'Hkd').textContent='HK$'+fmt(low+flight)+'–'+fmt(high+flight);
  }
