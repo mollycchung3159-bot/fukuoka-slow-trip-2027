@@ -308,6 +308,7 @@ footer p { margin: 0; }
 *, *::before, *::after { box-sizing: border-box; }
 .budget-table { overflow-x: auto; }
 .budget-table table { width:100%; border-collapse:collapse; font-size:.85rem; }
+#new-souvenir .budget-table td { white-space: nowrap; overflow-wrap: normal; }
 .budget-table th,.budget-table td { text-align:left; padding:.6rem .3rem; border-bottom:1px solid var(--line); overflow-wrap:anywhere; }
 .budget-people input { width:5rem; min-height:44px; }
 .emergency-card { padding:1rem; border:1px solid var(--line); }
